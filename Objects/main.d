@@ -29,3 +29,4 @@
 .\objects\main.o: .\libraries\stm32f10x_wwdg.h
 .\objects\main.o: .\libraries\misc.h
 .\objects\main.o: user\drivers.h
+.\objects\main.o: .\system\Delay.h

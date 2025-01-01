@@ -3,6 +3,7 @@
 
 int main(void) 
 {
-	Led_Test();
+	//Led_Blink();
+	Led_TubeLight(100);
 	return 0;
 }
