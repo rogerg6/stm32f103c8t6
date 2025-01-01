@@ -4,6 +4,7 @@
 int main(void) 
 {
 	//Led_Blink();
-	Led_TubeLight(100);
+	//Led_TubeLight(100);
+	Beeper_Test();
 	return 0;
 }

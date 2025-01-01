@@ -12,7 +12,8 @@
 
 
 void Led_Blink(void);
-void Led_TubeLight(uint32_t ms);		
+void Led_TubeLight(uint32_t ms);
+void Beeper_Test(void);
 
 #endif
 
