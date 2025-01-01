@@ -15,7 +15,7 @@ void Led_Blink(void);
 void Led_TubeLight(uint32_t ms);
 void Beeper_Test(void);
 void Button_Test(void);
-	
+void Photoresistor_Beeper(void);
 
 
 #endif
