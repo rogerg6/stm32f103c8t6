@@ -340,7 +340,7 @@
               <MiscControls></MiscControls>
               <Define>USE_STDPERIPH_DRIVER</Define>
               <Undefine></Undefine>
-              <IncludePath>.\start;.\libraries;.\user;.\system</IncludePath>
+              <IncludePath>.\start;.\libraries;.\user;.\system;.\bsp</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -558,6 +558,21 @@
               <FileName>Delay.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\system\Delay.h</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>bsp</GroupName>
+          <Files>
+            <File>
+              <FileName>gpio.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\bsp\gpio.c</FilePath>
+            </File>
+            <File>
+              <FileName>gpio.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\bsp\gpio.h</FilePath>
             </File>
           </Files>
         </Group>

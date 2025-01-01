@@ -11,4 +11,5 @@ Compiler: ARM v5.06
 - start stm32启动代码
 - libraries stm32片上外设库接口
 - system 系统相关函数接口
+- bsp 自己封装的外设接口, 更易于使用
 - user 应用代码

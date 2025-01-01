@@ -30,3 +30,4 @@
 .\objects\main.o: .\libraries\misc.h
 .\objects\main.o: user\drivers.h
 .\objects\main.o: .\system\Delay.h
+.\objects\main.o: .\bsp\gpio.h

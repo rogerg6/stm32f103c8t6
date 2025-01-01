@@ -30,3 +30,4 @@
 .\objects\drivers.o: .\libraries\stm32f10x_wwdg.h
 .\objects\drivers.o: .\libraries\misc.h
 .\objects\drivers.o: .\system\Delay.h
+.\objects\drivers.o: .\bsp\gpio.h

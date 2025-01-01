@@ -1,6 +1,6 @@
 #include "drivers.h"
 
-// led闪烁
+// led闪烁。核心板上的D2
 void Led_Blink(void)
 {
 	GPIO_InitTypeDef gpio_cfg;
@@ -27,7 +27,7 @@ void Led_Blink(void)
 }
 
 /***
- * @brief led流水灯
+ * @brief led流水灯. 8个led负极分别接到PA0~7, 正极接VCC
  * @parma ms延迟时间
  */
 void Led_TubeLight(uint32_t ms)
@@ -64,7 +64,10 @@ void Led_TubeLight(uint32_t ms)
 	
 }
 
-// 蜂鸣器
+/**** 
+ * 蜂鸣器
+ * IO口接PB10
+ */
 void Beeper_Test(void)
 {
 	GPIO_InitTypeDef gpio_cfg;
@@ -84,6 +87,46 @@ void Beeper_Test(void)
 		Delay_ms(300);
 		GPIO_WriteBit(GPIOB, GPIO_Pin_12, Bit_SET);		// 高电平静音
 		Delay_ms(300);
+	}
+}
+
+/**
+ * @brief 按键控制led灯, key1/2控制led1/2
+ * 		  LED    一极分别接到PA0,PA1,  一极接GND
+ * 		  Button 一极分别接到PB0,PB10, 一极接GND
+ */
+void Button_Test(void)
+{
+	GPIO_InitTypeDef gpio_cfg;
+	
+	/********* led init *********/
+	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA, ENABLE);
+	gpio_cfg.GPIO_Mode = GPIO_Mode_Out_PP;		
+	gpio_cfg.GPIO_Pin = GPIO_Pin_0 | GPIO_Pin_1;
+	gpio_cfg.GPIO_Speed = GPIO_Speed_50MHz;	
+	GPIO_Init(GPIOA, &gpio_cfg);
+	GPIO_Write(GPIOA, 0xffff);		// 全灭
+	
+	/******** button init *********/
+	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOB, ENABLE);
+	gpio_cfg.GPIO_Mode = GPIO_Mode_IPU;		// 输入上拉
+	gpio_cfg.GPIO_Pin = GPIO_Pin_0 | GPIO_Pin_10;
+	gpio_cfg.GPIO_Speed = GPIO_Speed_50MHz;	
+	GPIO_Init(GPIOB, &gpio_cfg);
+	
+	while (1) {
+		if (GPIO_ReadInputDataBit(GPIOB, GPIO_Pin_0) == Bit_RESET) {
+			Delay_ms(20);	// 防抖动
+			while (GPIO_ReadInputDataBit(GPIOB, GPIO_Pin_0) == Bit_RESET);
+			Delay_ms(20);	// 防抖动
+			Gpio_Pin_Toggle(GPIOA, GPIO_Pin_0);
+		}
+		if (GPIO_ReadInputDataBit(GPIOB, GPIO_Pin_10) == Bit_RESET) {
+			Delay_ms(20);
+			while (GPIO_ReadInputDataBit(GPIOB, GPIO_Pin_10) == Bit_RESET);
+			Delay_ms(20);
+			Gpio_Pin_Toggle(GPIOA, GPIO_Pin_1);
+		}
 	}
 }
 
