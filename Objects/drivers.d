@@ -31,3 +31,4 @@
 .\objects\drivers.o: .\libraries\misc.h
 .\objects\drivers.o: .\system\Delay.h
 .\objects\drivers.o: .\bsp\gpio.h
+.\objects\drivers.o: .\bsp\OLED.h

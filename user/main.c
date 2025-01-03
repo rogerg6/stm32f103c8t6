@@ -7,7 +7,8 @@ int main(void)
 	//Led_TubeLight(100);
 	//Beeper_Test();
 	//Button_Test();
-	Photoresistor_Beeper();
+	//Photoresistor_Beeper();
+	OLED_Test();
 	
 	return 0;
 }
