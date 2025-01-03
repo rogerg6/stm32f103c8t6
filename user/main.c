@@ -9,7 +9,8 @@ int main(void)
 	//Button_Test();
 	//Photoresistor_Beeper();
 	//OLED_Test();
-	SensorCounter_Test();
+	//SensorCounter_Test();
+	Rotate_Test();
 	
 	return 0;
 }
