@@ -8,7 +8,8 @@ int main(void)
 	//Beeper_Test();
 	//Button_Test();
 	//Photoresistor_Beeper();
-	OLED_Test();
+	//OLED_Test();
+	SensorCounter_Test();
 	
 	return 0;
 }

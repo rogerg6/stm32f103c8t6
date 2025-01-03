@@ -18,6 +18,7 @@ void Beeper_Test(void);
 void Button_Test(void);
 void Photoresistor_Beeper(void);
 void OLED_Test(void);
+void SensorCounter_Test(void);
 
 
 #endif
