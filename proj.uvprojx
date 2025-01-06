@@ -340,7 +340,7 @@
               <MiscControls></MiscControls>
               <Define>USE_STDPERIPH_DRIVER</Define>
               <Undefine></Undefine>
-              <IncludePath>.\start;.\libraries;.\user;.\system;.\bsp</IncludePath>
+              <IncludePath>.\start;.\libraries;.\user;.\system;.\bsp;.\user\gpio;.\user\exti;.\user\timer</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -535,14 +535,119 @@
               <FilePath>.\libraries\stm32f10x_wwdg.c</FilePath>
             </File>
             <File>
-              <FileName>stm32f10x_conf.h</FileName>
+              <FileName>misc.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\user\stm32f10x_conf.h</FilePath>
+              <FilePath>.\libraries\misc.h</FilePath>
             </File>
             <File>
-              <FileName>stm32f10x_it.h</FileName>
+              <FileName>stm32f10x_adc.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\user\stm32f10x_it.h</FilePath>
+              <FilePath>.\libraries\stm32f10x_adc.h</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f10x_bkp.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\libraries\stm32f10x_bkp.h</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f10x_can.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\libraries\stm32f10x_can.h</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f10x_cec.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\libraries\stm32f10x_cec.h</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f10x_crc.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\libraries\stm32f10x_crc.h</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f10x_dac.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\libraries\stm32f10x_dac.h</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f10x_dbgmcu.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\libraries\stm32f10x_dbgmcu.h</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f10x_dma.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\libraries\stm32f10x_dma.h</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f10x_exti.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\libraries\stm32f10x_exti.h</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f10x_flash.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\libraries\stm32f10x_flash.h</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f10x_fsmc.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\libraries\stm32f10x_fsmc.h</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f10x_gpio.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\libraries\stm32f10x_gpio.h</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f10x_i2c.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\libraries\stm32f10x_i2c.h</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f10x_iwdg.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\libraries\stm32f10x_iwdg.h</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f10x_pwr.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\libraries\stm32f10x_pwr.h</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f10x_rcc.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\libraries\stm32f10x_rcc.h</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f10x_rtc.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\libraries\stm32f10x_rtc.h</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f10x_sdio.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\libraries\stm32f10x_sdio.h</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f10x_spi.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\libraries\stm32f10x_spi.h</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f10x_tim.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\libraries\stm32f10x_tim.h</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f10x_usart.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\libraries\stm32f10x_usart.h</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f10x_wwdg.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\libraries\stm32f10x_wwdg.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -615,14 +720,9 @@
               <FilePath>.\user\stm32f10x_it.h</FilePath>
             </File>
             <File>
-              <FileName>drivers.c</FileName>
+              <FileName>external_timer.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\user\drivers.c</FilePath>
-            </File>
-            <File>
-              <FileName>drivers.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\user\drivers.h</FilePath>
+              <FilePath>.\user\timer\external_timer.c</FilePath>
             </File>
           </Files>
         </Group>

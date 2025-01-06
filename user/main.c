@@ -1,16 +1,9 @@
 #include "stm32f10x.h"                  // Device header
-#include "drivers.h"
+#include "external_timer.h"
+
 
 int main(void) 
 {
-	//Led_Blink();
-	//Led_TubeLight(100);
-	//Beeper_Test();
-	//Button_Test();
-	//Photoresistor_Beeper();
-	//OLED_Test();
-	//SensorCounter_Test();
-	Rotate_Test();
-	
+	External_Timer_Test();
 	return 0;
 }

@@ -1,5 +1,5 @@
 .\objects\drivers.o: user\drivers.c
-.\objects\drivers.o: user\drivers.h
+.\objects\drivers.o: .\system\Delay.h
 .\objects\drivers.o: .\start\stm32f10x.h
 .\objects\drivers.o: .\start\core_cm3.h
 .\objects\drivers.o: D:\.install\keil5\keil5_MDK\ARM\ARMCC\Bin\..\include\stdint.h
@@ -29,6 +29,5 @@
 .\objects\drivers.o: .\libraries\stm32f10x_usart.h
 .\objects\drivers.o: .\libraries\stm32f10x_wwdg.h
 .\objects\drivers.o: .\libraries\misc.h
-.\objects\drivers.o: .\system\Delay.h
 .\objects\drivers.o: .\bsp\gpio.h
 .\objects\drivers.o: .\bsp\OLED.h

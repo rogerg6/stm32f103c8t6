@@ -10,3 +10,4 @@ void Gpio_Pin_Toggle(GPIO_TypeDef *GPIOx, uint16_t pin)
 	else
 		GPIO_ResetBits(GPIOx, pin);
 }
+

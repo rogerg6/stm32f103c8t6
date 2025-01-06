@@ -30,7 +30,7 @@
 ".\objects\oled.o"
 ".\objects\main.o"
 ".\objects\stm32f10x_it.o"
-".\objects\drivers.o"
+".\objects\external_timer.o"
 --strict --scatter ".\Objects\proj.sct"
 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers
