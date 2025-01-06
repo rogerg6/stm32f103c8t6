@@ -1,9 +1,9 @@
 #include "stm32f10x.h"                  // Device header
-#include "external_timer.h"
+#include "pwm_breath_led.h"
 
 
 int main(void) 
 {
-	External_Timer_Test();
+	PWM_Breath_Led();
 	return 0;
 }

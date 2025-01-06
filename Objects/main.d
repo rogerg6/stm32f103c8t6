@@ -28,4 +28,4 @@
 .\objects\main.o: .\libraries\stm32f10x_usart.h
 .\objects\main.o: .\libraries\stm32f10x_wwdg.h
 .\objects\main.o: .\libraries\misc.h
-.\objects\main.o: .\user\timer\external_timer.h
+.\objects\main.o: .\user\timer\pwm_breath_led.h

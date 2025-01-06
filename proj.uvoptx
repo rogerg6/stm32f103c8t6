@@ -263,7 +263,7 @@
 
   <Group>
     <GroupName>libraries</GroupName>
-    <tvExp>0</tvExp>
+    <tvExp>1</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>
@@ -982,8 +982,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\user\timer\external_timer.c</PathWithFileName>
-      <FilenameWithoutPath>external_timer.c</FilenameWithoutPath>
+      <PathWithFileName>.\user\timer\pwm_breath_led.c</PathWithFileName>
+      <FilenameWithoutPath>pwm_breath_led.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>

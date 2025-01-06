@@ -13,3 +13,6 @@
 - system 系统相关函数接口
 - bsp 自己封装的外设接口, 更易于使用
 - user 应用代码
+    - gpio
+    - exti 外部中断
+    - timer 内部，外部时钟源定时器；OC/PWM（led呼吸灯，舵机，电机）

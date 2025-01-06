@@ -720,9 +720,9 @@
               <FilePath>.\user\stm32f10x_it.h</FilePath>
             </File>
             <File>
-              <FileName>external_timer.c</FileName>
+              <FileName>pwm_breath_led.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\user\timer\external_timer.c</FilePath>
+              <FilePath>.\user\timer\pwm_breath_led.c</FilePath>
             </File>
           </Files>
         </Group>
