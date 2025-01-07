@@ -720,9 +720,9 @@
               <FilePath>.\user\stm32f10x_it.h</FilePath>
             </File>
             <File>
-              <FileName>pwm_servo.c</FileName>
+              <FileName>pwm_motor.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\user\timer\pwm_servo.c</FilePath>
+              <FilePath>.\user\timer\pwm_motor.c</FilePath>
             </File>
           </Files>
         </Group>

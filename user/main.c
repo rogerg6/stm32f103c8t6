@@ -1,9 +1,9 @@
 #include "stm32f10x.h"                  // Device header
-#include "pwm_servo.h"
+#include "pwm_motor.h"
 
 
 int main(void) 
 {
-	PWM_Servo();
+	PWM_Motor();
 	return 0;
 }

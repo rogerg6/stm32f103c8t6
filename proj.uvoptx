@@ -982,8 +982,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\user\timer\pwm_servo.c</PathWithFileName>
-      <FilenameWithoutPath>pwm_servo.c</FilenameWithoutPath>
+      <PathWithFileName>.\user\timer\pwm_motor.c</PathWithFileName>
+      <FilenameWithoutPath>pwm_motor.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
