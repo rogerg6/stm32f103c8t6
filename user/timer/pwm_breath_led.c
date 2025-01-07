@@ -1,5 +1,5 @@
 /**
- * @brief 利用TIM的OC输出比较功能，输出PWM波形
+ * @brief 利用TIM2的的CH1 OC输出比较功能，输出PWM波形
  *		  来控制led的亮度变化，实现呼吸灯的功能
  *
  * 硬件连接：
@@ -16,7 +16,7 @@ void PWM_Breath_Led(void)
 {
 	int i;
 	
-	/// Timer init ///
+	/// PWM init ///
 	// 使能系统时钟
 	RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM2, ENABLE);
 	

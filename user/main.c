@@ -1,9 +1,9 @@
 #include "stm32f10x.h"                  // Device header
-#include "pwm_breath_led.h"
+#include "pwm_servo.h"
 
 
 int main(void) 
 {
-	PWM_Breath_Led();
+	PWM_Servo();
 	return 0;
 }
