@@ -28,4 +28,4 @@
 .\objects\main.o: .\libraries\stm32f10x_usart.h
 .\objects\main.o: .\libraries\stm32f10x_wwdg.h
 .\objects\main.o: .\libraries\misc.h
-.\objects\main.o: .\user\timer\ic_pwm_measure.h
+.\objects\main.o: .\user\timer\encoder_speed_measure.h

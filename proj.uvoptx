@@ -982,8 +982,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\user\timer\ic_pwm_measure.c</PathWithFileName>
-      <FilenameWithoutPath>ic_pwm_measure.c</FilenameWithoutPath>
+      <PathWithFileName>.\user\timer\encoder_speed_measure.c</PathWithFileName>
+      <FilenameWithoutPath>encoder_speed_measure.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>

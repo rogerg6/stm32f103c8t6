@@ -1,9 +1,9 @@
 #include "stm32f10x.h"                  // Device header
-#include "ic_pwm_measure.h"
+#include "encoder_speed_measure.h"
 
 
 int main(void) 
 {
-	IC_PWMMeasure();
+	Encoder_Speed_Measure();
 	return 0;
 }
