@@ -720,9 +720,9 @@
               <FilePath>.\user\stm32f10x_it.h</FilePath>
             </File>
             <File>
-              <FileName>ic_freq_measure.c</FileName>
+              <FileName>ic_pwm_measure.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\user\timer\ic_freq_measure.c</FilePath>
+              <FilePath>.\user\timer\ic_pwm_measure.c</FilePath>
             </File>
           </Files>
         </Group>

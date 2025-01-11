@@ -1,8 +1,8 @@
 /**
- * @brief 测周法测频率
- *		  利用TIM3的的CH1 IC(输入捕获功能)，对PWM波形进行频率测量
- *		  具体是TIM2 CH1产生频率为1KHz的波形，从PA0输出
- *        TIM3 CH1从PA6读取输入的波形，并通过IC测量输入波形的频率，并在OLED显示结果
+ * @brief 测周法测频率和占空比
+ * 		  利用TIM3的的CH1 IC(输入捕获功能)，对PWM波形进行频率, 占空比测量
+ *		  具体是TIM2 CH1产生PWM波形，从PA0输出
+ *        TIM3 CH1从PA6读取输入的波形，并通过IC测量输入波形的频率，占空比，并在OLED显示结果
  * 硬件连接：
  *		PA0 短接 PA6
  *
@@ -49,7 +49,7 @@ void PWM_Init(void)
 	tim_oc_cfg.TIM_OCMode = TIM_OCMode_PWM1;
 	tim_oc_cfg.TIM_OCPolarity = TIM_OCPolarity_High;
 	tim_oc_cfg.TIM_OutputState = TIM_OutputState_Enable;
-	tim_oc_cfg.TIM_Pulse = 50;					// CCR
+	tim_oc_cfg.TIM_Pulse = 85;					// CCR
 	TIM_OC1Init(TIM2, &tim_oc_cfg);
 	
 	// 使能TIM2
@@ -81,7 +81,7 @@ void IC_Init(void)
 	tim_tb_cfg.TIM_ClockDivision = TIM_CKD_DIV1;
 	tim_tb_cfg.TIM_CounterMode = TIM_CounterMode_Up;	// 递增计数
 	tim_tb_cfg.TIM_Period = 65536 - 1;					// ARR寄存器的值
-	tim_tb_cfg.TIM_Prescaler = 72 - 1;					// PRC.
+	tim_tb_cfg.TIM_Prescaler = 72- 1;					// PRC.
 	tim_tb_cfg.TIM_RepetitionCounter = 0;
 	TIM_TimeBaseInit(TIM3, &tim_tb_cfg);
 
@@ -94,7 +94,7 @@ void IC_Init(void)
 	tim_ic_cfg.TIM_ICPolarity = TIM_ICPolarity_Rising;
 	tim_ic_cfg.TIM_ICPrescaler = TIM_ICPSC_DIV1;
 	tim_ic_cfg.TIM_ICSelection = TIM_ICSelection_DirectTI;
-	TIM_ICInit(TIM3, &tim_ic_cfg);
+	TIM_PWMIConfig(TIM3, &tim_ic_cfg);	
 	
 	/**
 	 * 配置输入触发源，从模式。可以实现自动清零计数器，这样读取的CCR的值
@@ -108,15 +108,17 @@ void IC_Init(void)
 }
 
 
-void IC_FreqMeasure(void)
+void IC_PWMMeasure(void)
 {	
 	PWM_Init();
 	IC_Init();
 	OLED_Init();
 	OLED_ShowString(1, 1, "freq=00000Hz");
+	OLED_ShowString(2, 1, "duty=00%");
 	
 	while (1) {
 		OLED_ShowNum(1, 6, 1000000 / (TIM_GetCapture1(TIM3) + 1), 5);
+		OLED_ShowNum(2, 6, 100 * (TIM_GetCapture2(TIM3) + 1) / (TIM_GetCapture1(TIM3) + 1), 2);
 	}
 }
 
