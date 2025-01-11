@@ -1,9 +1,9 @@
 #include "stm32f10x.h"                  // Device header
-#include "pwm_motor.h"
+#include "ic_freq_measure.h"
 
 
 int main(void) 
 {
-	PWM_Motor();
+	IC_FreqMeasure();
 	return 0;
 }
