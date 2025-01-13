@@ -1,9 +1,9 @@
 #include "stm32f10x.h"                  // Device header
-#include "encoder_speed_measure.h"
+#include "adc_single_channel.h"
 
 
 int main(void) 
 {
-	Encoder_Speed_Measure();
+	ADC_SingleChannelTest();
 	return 0;
 }

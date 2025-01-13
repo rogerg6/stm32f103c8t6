@@ -340,7 +340,7 @@
               <MiscControls></MiscControls>
               <Define>USE_STDPERIPH_DRIVER</Define>
               <Undefine></Undefine>
-              <IncludePath>.\start;.\libraries;.\user;.\system;.\bsp;.\user\gpio;.\user\exti;.\user\timer</IncludePath>
+              <IncludePath>.\start;.\libraries;.\user;.\system;.\bsp;.\user\gpio;.\user\exti;.\user\timer;.\user\adc</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -720,9 +720,9 @@
               <FilePath>.\user\stm32f10x_it.h</FilePath>
             </File>
             <File>
-              <FileName>encoder_speed_measure.c</FileName>
+              <FileName>adc_single_channel.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\user\timer\encoder_speed_measure.c</FilePath>
+              <FilePath>.\user\adc\adc_single_channel.c</FilePath>
             </File>
           </Files>
         </Group>
