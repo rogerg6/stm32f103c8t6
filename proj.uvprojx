@@ -720,9 +720,9 @@
               <FilePath>.\user\stm32f10x_it.h</FilePath>
             </File>
             <File>
-              <FileName>adc_single_channel.c</FileName>
+              <FileName>adc_multi_channel.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\user\adc\adc_single_channel.c</FilePath>
+              <FilePath>.\user\adc\adc_multi_channel.c</FilePath>
             </File>
           </Files>
         </Group>

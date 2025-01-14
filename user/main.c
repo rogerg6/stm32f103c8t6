@@ -1,9 +1,9 @@
 #include "stm32f10x.h"                  // Device header
-#include "adc_single_channel.h"
+#include "adc_multi_channel.h"
 
 
 int main(void) 
 {
-	ADC_SingleChannelTest();
+	ADC_MultiChannelTest();
 	return 0;
 }
