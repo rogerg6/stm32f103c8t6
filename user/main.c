@@ -1,5 +1,5 @@
 #include "stm32f10x.h"                  // Device header
-#include "dma_ad.h"
+#include "dma_ad2.h"
 
 
 int main(void) 

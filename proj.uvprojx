@@ -720,9 +720,9 @@
               <FilePath>.\user\stm32f10x_it.h</FilePath>
             </File>
             <File>
-              <FileName>dma_ad.c</FileName>
+              <FileName>dma_ad2.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\user\dma\dma_ad.c</FilePath>
+              <FilePath>.\user\dma\dma_ad2.c</FilePath>
             </File>
           </Files>
         </Group>

@@ -1,5 +1,6 @@
 /**
- * @brief adc多通道单次扫描 + DMA单次传输模式，采集外设模拟值
+ * @brief adc多通道连续扫描 + DMA连续传输模式，采集外设模拟值。完全由硬件自动
+ *		  进行adc测量和dma转运，减轻cpu负担
  *
  * 硬件连接：
  *		电位器    : GND, VCC分别接GND，3.3v，AO输出接 PA0
@@ -27,7 +28,7 @@ static void DMAInit(uint32_t src, uint32_t dst, uint16_t size)
 	dma_cfg.DMA_MemoryBaseAddr = dst;
 	dma_cfg.DMA_MemoryDataSize = DMA_MemoryDataSize_HalfWord;
 	dma_cfg.DMA_MemoryInc = DMA_MemoryInc_Enable;
-	dma_cfg.DMA_Mode = DMA_Mode_Normal;			// dma不自动加载传输计数器
+	dma_cfg.DMA_Mode = DMA_Mode_Circular;			// dma自动加载传输计数器，即连续传输模式
 	dma_cfg.DMA_BufferSize = size;				// 传输计数器的值
 	dma_cfg.DMA_DIR = DMA_DIR_PeripheralSRC;	// 传输方向为 periph -> mem
 	dma_cfg.DMA_M2M = DMA_M2M_Disable;			// 硬件触发，本例程是adc转换完成触发dma搬运
@@ -59,7 +60,7 @@ static void ADC_SingleChannelInit(void)
 	ADC_RegularChannelConfig(ADC1, ADC_Channel_3, 4, ADC_SampleTime_55Cycles5);
 
 	ADC_InitTypeDef adc_cfg;
-	adc_cfg.ADC_ContinuousConvMode = DISABLE;		// 非连续转换
+	adc_cfg.ADC_ContinuousConvMode = ENABLE;		// 连续转换
 	adc_cfg.ADC_DataAlign = ADC_DataAlign_Right;	// 转换结果右对齐
 	adc_cfg.ADC_ExternalTrigConv = ADC_ExternalTrigConv_None;	// 无外部触发转换，本例程软件调用
 	adc_cfg.ADC_Mode = ADC_Mode_Independent;		// 独立通道转换
@@ -69,7 +70,8 @@ static void ADC_SingleChannelInit(void)
 	
 	// 配置dma
 	DMAInit((uint32_t)&ADC1->DR, (uint32_t)AD_values, 4);
-	
+	DMA_Cmd(DMA1_Channel1, ENABLE);
+
 	// 开启adc1的dma功能
 	ADC_DMACmd(ADC1, ENABLE);
 	
@@ -81,22 +83,9 @@ static void ADC_SingleChannelInit(void)
 	while (ADC_GetResetCalibrationStatus(ADC1) == SET);
 	ADC_StartCalibration(ADC1);
 	while (ADC_GetCalibrationStatus(ADC1) == SET);
-}
-
-void ADC_GetValue(void)
-{
-	// 先disable
-	DMA_Cmd(DMA1_Channel1, DISABLE);	
-	// 设置传输计数器
-	DMA_SetCurrDataCounter(DMA1_Channel1, 4);
-	// 再使能
-	DMA_Cmd(DMA1_Channel1, ENABLE);
-	// 触发adc转换
+	
+	// 连续扫描模式只需要软件触发一次即可
 	ADC_SoftwareStartConvCmd(ADC1, ENABLE);
-	// 等待传输完成
-	while (DMA_GetFlagStatus(DMA1_FLAG_TC1) == RESET);
-	// 需要手动清0
-	DMA_ClearFlag(DMA1_FLAG_TC1);
 }
 
 void DMA_ADC_Test(void)
@@ -109,9 +98,7 @@ void DMA_ADC_Test(void)
 	OLED_ShowString(3, 1, "AD2:");
 	OLED_ShowString(4, 1, "AD3:");
 	
-	while (1) {
-		ADC_GetValue();
-	
+	while (1) {	
 		OLED_ShowNum(1, 10, AD_values[0], 4);
 		OLED_ShowNum(2, 10, AD_values[1], 4);
 		OLED_ShowNum(3, 10, AD_values[2], 4);

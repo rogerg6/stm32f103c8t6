@@ -28,4 +28,4 @@
 .\objects\main.o: .\libraries\stm32f10x_usart.h
 .\objects\main.o: .\libraries\stm32f10x_wwdg.h
 .\objects\main.o: .\libraries\misc.h
-.\objects\main.o: .\user\dma\dma_ad.h
+.\objects\main.o: .\user\dma\dma_ad2.h

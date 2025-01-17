@@ -982,8 +982,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\user\dma\dma_ad.c</PathWithFileName>
-      <FilenameWithoutPath>dma_ad.c</FilenameWithoutPath>
+      <PathWithFileName>.\user\dma\dma_ad2.c</PathWithFileName>
+      <FilenameWithoutPath>dma_ad2.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
