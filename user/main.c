@@ -1,9 +1,9 @@
 #include "stm32f10x.h"                  // Device header
-#include "adc_multi_channel.h"
+#include "dma_mem2mem.h"
 
 
 int main(void) 
 {
-	ADC_MultiChannelTest();
+	DMA_M2M_Test();
 	return 0;
 }

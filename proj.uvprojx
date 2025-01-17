@@ -340,7 +340,7 @@
               <MiscControls></MiscControls>
               <Define>USE_STDPERIPH_DRIVER</Define>
               <Undefine></Undefine>
-              <IncludePath>.\start;.\libraries;.\user;.\system;.\bsp;.\user\gpio;.\user\exti;.\user\timer;.\user\adc</IncludePath>
+              <IncludePath>.\start;.\libraries;.\user;.\system;.\bsp;.\user\gpio;.\user\exti;.\user\timer;.\user\adc;.\user\dma</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -720,9 +720,9 @@
               <FilePath>.\user\stm32f10x_it.h</FilePath>
             </File>
             <File>
-              <FileName>adc_multi_channel.c</FileName>
+              <FileName>dma_mem2mem.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\user\adc\adc_multi_channel.c</FilePath>
+              <FilePath>.\user\dma\dma_mem2mem.c</FilePath>
             </File>
           </Files>
         </Group>
