@@ -1,9 +1,8 @@
 #include "stm32f10x.h"                  // Device header
-#include "dma_ad2.h"
-
+#include "uart.h"
 
 int main(void) 
 {
-	DMA_ADC_Test();
+	UART_Test();
 	return 0;
 }
