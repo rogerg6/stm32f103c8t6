@@ -3,6 +3,7 @@
 
 #include "stm32f10x.h"                  // Device header
 
+#define MPU6050_ADDR			0xD0
 
 #define MPU6050_ADDR_W			0xD0
 #define MPU6050_ADDR_R			0xD1

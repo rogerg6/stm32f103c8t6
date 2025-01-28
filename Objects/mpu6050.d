@@ -31,4 +31,3 @@
 .\objects\mpu6050.o: .\libraries\misc.h
 .\objects\mpu6050.o: .\bsp\OLED.h
 .\objects\mpu6050.o: .\system\Delay.h
-.\objects\mpu6050.o: user\i2c\i2c_sim.h
