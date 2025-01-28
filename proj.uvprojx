@@ -340,7 +340,7 @@
               <MiscControls></MiscControls>
               <Define>USE_STDPERIPH_DRIVER</Define>
               <Undefine></Undefine>
-              <IncludePath>.\start;.\libraries;.\user;.\system;.\bsp;.\user\gpio;.\user\exti;.\user\timer;.\user\adc;.\user\dma;.\user\uart</IncludePath>
+              <IncludePath>.\start;.\libraries;.\user;.\system;.\bsp;.\user\gpio;.\user\exti;.\user\timer;.\user\adc;.\user\dma;.\user\uart;.\user\i2c</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -694,6 +694,16 @@
               <FileType>5</FileType>
               <FilePath>.\bsp\OLED_Font.h</FilePath>
             </File>
+            <File>
+              <FileName>i2c_sim.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\user\i2c\i2c_sim.c</FilePath>
+            </File>
+            <File>
+              <FileName>i2c_sim.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\user\i2c\i2c_sim.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -720,9 +730,9 @@
               <FilePath>.\user\stm32f10x_it.h</FilePath>
             </File>
             <File>
-              <FileName>uart.c</FileName>
+              <FileName>MPU6050.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\user\uart\uart.c</FilePath>
+              <FilePath>.\user\i2c\MPU6050.c</FilePath>
             </File>
           </Files>
         </Group>

@@ -28,4 +28,4 @@
 .\objects\main.o: .\libraries\stm32f10x_usart.h
 .\objects\main.o: .\libraries\stm32f10x_wwdg.h
 .\objects\main.o: .\libraries\misc.h
-.\objects\main.o: .\user\uart\uart.h
+.\objects\main.o: .\user\i2c\MPU6050.h

@@ -1,8 +1,8 @@
 #include "stm32f10x.h"                  // Device header
-#include "uart.h"
+#include "MPU6050.h"
 
 int main(void) 
 {
-	UART_Test();
+	MPU6050_Test();
 	return 0;
 }

@@ -16,3 +16,7 @@
     - gpio
     - exti 外部中断
     - timer 内部，外部时钟源定时器；OC/PWM（led呼吸灯，舵机，电机）
+    - adc 模数转换
+    - dma mem2mem, mem2periph搬运
+    - usart 串口
+    - i2c 软件模拟/硬件读取MPU6050 6轴姿态传感器数据
