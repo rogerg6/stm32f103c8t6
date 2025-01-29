@@ -1,8 +1,12 @@
 #include "stm32f10x.h"                  // Device header
-#include "MPU6050.h"
+#include "W25Qxx.h"
+#include "OLED.h"
+
+uint8_t MID;
+uint16_t DID;
 
 int main(void) 
 {
-	MPU6050_Test();
+	W25Qxx_Test();
 	return 0;
 }

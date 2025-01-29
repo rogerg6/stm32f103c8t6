@@ -29,10 +29,11 @@
 ".\objects\gpio.o"
 ".\objects\oled.o"
 ".\objects\i2c_sim.o"
+".\objects\spi_sim.o"
 ".\objects\main.o"
 ".\objects\stm32f10x_it.o"
-".\objects\mpu6050.o"
---library_type=microlib --strict --scatter ".\Objects\proj.sct"
+".\objects\w25qxx.o"
+--strict --scatter ".\Objects\proj.sct"
 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers
 --list ".\Listings\proj.map" -o .\Objects\proj.axf
