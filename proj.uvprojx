@@ -705,14 +705,14 @@
               <FilePath>.\user\i2c\i2c_sim.h</FilePath>
             </File>
             <File>
-              <FileName>spi_sim.c</FileName>
+              <FileName>spi.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\user\spi\spi_sim.c</FilePath>
+              <FilePath>.\user\spi\spi.c</FilePath>
             </File>
             <File>
-              <FileName>spi_sim.h</FileName>
+              <FileName>spi.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\user\spi\spi_sim.h</FilePath>
+              <FilePath>.\user\spi\spi.h</FilePath>
             </File>
           </Files>
         </Group>

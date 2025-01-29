@@ -873,8 +873,8 @@ I (.\libraries\stm32f10x_usart.h)(0x4D783BB4)
 I (.\libraries\stm32f10x_wwdg.h)(0x4D783BB4)
 I (.\libraries\misc.h)(0x4D783BB4)
 F (.\user\i2c\i2c_sim.h)(0x67983035)()
-F (.\user\spi\spi_sim.c)(0x679A1E77)(--c99 -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I .\start -I .\libraries -I .\user -I .\system -I .\bsp -I .\user\gpio -I .\user\exti -I .\user\timer -I .\user\adc -I .\user\dma -I .\user\uart -I .\user\i2c -I .\user\spi-ID:\.install\keil5\Pack\Keil\STM32F1xx_DFP\2.2.0\Device\Include-D__UVISION_VERSION="540" -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER-o .\objects\spi_sim.o --omf_browse .\objects\spi_sim.crf --depend .\objects\spi_sim.d)
-I (user\spi\spi_sim.h)(0x679A16E9)
+F (.\user\spi\spi.c)(0x679A30AB)(--c99 -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I .\start -I .\libraries -I .\user -I .\system -I .\bsp -I .\user\gpio -I .\user\exti -I .\user\timer -I .\user\adc -I .\user\dma -I .\user\uart -I .\user\i2c -I .\user\spi-ID:\.install\keil5\Pack\Keil\STM32F1xx_DFP\2.2.0\Device\Include-D__UVISION_VERSION="540" -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER-o .\objects\spi.o --omf_browse .\objects\spi.crf --depend .\objects\spi.d)
+I (user\spi\spi.h)(0x679A308B)
 I (.\start\stm32f10x.h)(0x4D783CB4)
 I (.\start\core_cm3.h)(0x4D523B58)
 I (D:\.install\keil5\keil5_MDK\ARM\ARMCC\include\stdint.h)(0x5E8E3CC2)
@@ -903,8 +903,8 @@ I (.\libraries\stm32f10x_tim.h)(0x4D783BB4)
 I (.\libraries\stm32f10x_usart.h)(0x4D783BB4)
 I (.\libraries\stm32f10x_wwdg.h)(0x4D783BB4)
 I (.\libraries\misc.h)(0x4D783BB4)
-F (.\user\spi\spi_sim.h)(0x679A16E9)()
-F (.\user\main.c)(0x679A165C)(--c99 -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I .\start -I .\libraries -I .\user -I .\system -I .\bsp -I .\user\gpio -I .\user\exti -I .\user\timer -I .\user\adc -I .\user\dma -I .\user\uart -I .\user\i2c -I .\user\spi-ID:\.install\keil5\Pack\Keil\STM32F1xx_DFP\2.2.0\Device\Include-D__UVISION_VERSION="540" -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER-o .\objects\main.o --omf_browse .\objects\main.crf --depend .\objects\main.d)
+F (.\user\spi\spi.h)(0x679A308B)()
+F (.\user\main.c)(0x679A2FEF)(--c99 -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I .\start -I .\libraries -I .\user -I .\system -I .\bsp -I .\user\gpio -I .\user\exti -I .\user\timer -I .\user\adc -I .\user\dma -I .\user\uart -I .\user\i2c -I .\user\spi-ID:\.install\keil5\Pack\Keil\STM32F1xx_DFP\2.2.0\Device\Include-D__UVISION_VERSION="540" -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER-o .\objects\main.o --omf_browse .\objects\main.crf --depend .\objects\main.d)
 I (.\start\stm32f10x.h)(0x4D783CB4)
 I (.\start\core_cm3.h)(0x4D523B58)
 I (D:\.install\keil5\keil5_MDK\ARM\ARMCC\include\stdint.h)(0x5E8E3CC2)
@@ -933,7 +933,7 @@ I (.\libraries\stm32f10x_tim.h)(0x4D783BB4)
 I (.\libraries\stm32f10x_usart.h)(0x4D783BB4)
 I (.\libraries\stm32f10x_wwdg.h)(0x4D783BB4)
 I (.\libraries\misc.h)(0x4D783BB4)
-I (.\user\spi\W25Qxx.h)(0x679A1F2B)
+I (.\user\spi\W25Qxx.h)(0x679A2C23)
 I (.\bsp\OLED.h)(0x677A649E)
 F (.\user\stm32f10x_it.c)(0x4D99A59E)(--c99 -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I .\start -I .\libraries -I .\user -I .\system -I .\bsp -I .\user\gpio -I .\user\exti -I .\user\timer -I .\user\adc -I .\user\dma -I .\user\uart -I .\user\i2c -I .\user\spi-ID:\.install\keil5\Pack\Keil\STM32F1xx_DFP\2.2.0\Device\Include-D__UVISION_VERSION="540" -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER-o .\objects\stm32f10x_it.o --omf_browse .\objects\stm32f10x_it.crf --depend .\objects\stm32f10x_it.d)
 I (user\stm32f10x_it.h)(0x4D99A59E)
@@ -967,8 +967,8 @@ I (.\libraries\stm32f10x_wwdg.h)(0x4D783BB4)
 I (.\libraries\misc.h)(0x4D783BB4)
 F (.\user\stm32f10x_conf.h)(0x4D99A59E)()
 F (.\user\stm32f10x_it.h)(0x4D99A59E)()
-F (.\user\spi\W25Qxx.c)(0x679A1F14)(--c99 -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I .\start -I .\libraries -I .\user -I .\system -I .\bsp -I .\user\gpio -I .\user\exti -I .\user\timer -I .\user\adc -I .\user\dma -I .\user\uart -I .\user\i2c -I .\user\spi-ID:\.install\keil5\Pack\Keil\STM32F1xx_DFP\2.2.0\Device\Include-D__UVISION_VERSION="540" -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER-o .\objects\w25qxx.o --omf_browse .\objects\w25qxx.crf --depend .\objects\w25qxx.d)
-I (user\spi\spi_sim.h)(0x679A16E9)
+F (.\user\spi\W25Qxx.c)(0x679A3176)(--c99 -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I .\start -I .\libraries -I .\user -I .\system -I .\bsp -I .\user\gpio -I .\user\exti -I .\user\timer -I .\user\adc -I .\user\dma -I .\user\uart -I .\user\i2c -I .\user\spi-ID:\.install\keil5\Pack\Keil\STM32F1xx_DFP\2.2.0\Device\Include-D__UVISION_VERSION="540" -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER-o .\objects\w25qxx.o --omf_browse .\objects\w25qxx.crf --depend .\objects\w25qxx.d)
+I (user\spi\spi.h)(0x679A308B)
 I (.\start\stm32f10x.h)(0x4D783CB4)
 I (.\start\core_cm3.h)(0x4D523B58)
 I (D:\.install\keil5\keil5_MDK\ARM\ARMCC\include\stdint.h)(0x5E8E3CC2)
@@ -998,4 +998,4 @@ I (.\libraries\stm32f10x_usart.h)(0x4D783BB4)
 I (.\libraries\stm32f10x_wwdg.h)(0x4D783BB4)
 I (.\libraries\misc.h)(0x4D783BB4)
 I (.\bsp\OLED.h)(0x677A649E)
-I (user\spi\W25Qxx.h)(0x679A1F2B)
+I (user\spi\W25Qxx.h)(0x679A2C23)

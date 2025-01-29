@@ -42,7 +42,6 @@ void W25Qxx_ReadData(uint32_t addr, uint8_t *data, uint32_t len);
 void W25Qxx_Test(void);
 
 
-#define USE_SPI_SIMULATION 1
 
 
 #endif

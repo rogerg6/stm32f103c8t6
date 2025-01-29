@@ -1,5 +1,5 @@
 .\objects\w25qxx.o: user\spi\W25Qxx.c
-.\objects\w25qxx.o: user\spi\spi_sim.h
+.\objects\w25qxx.o: user\spi\spi.h
 .\objects\w25qxx.o: .\start\stm32f10x.h
 .\objects\w25qxx.o: .\start\core_cm3.h
 .\objects\w25qxx.o: D:\.install\keil5\keil5_MDK\ARM\ARMCC\Bin\..\include\stdint.h

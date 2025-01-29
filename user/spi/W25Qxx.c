@@ -1,5 +1,5 @@
 /***
- * @brief W25Q64驱动代码
+ * @brief W25Q64 NOR Flash驱动代码
  *
  * 硬件连接：
  *  VCC, GND - 3.3v, GND
@@ -8,26 +8,24 @@
  *  PA6 - DO
  *  PA7 - DI
  */
-#include "spi_sim.h"
+#include "spi.h"
 #include "OLED.h"
 #include "W25Qxx.h"
-
-#ifdef USE_SPI_SIMULATION
 
 static void W25Qxx_WaitBusy(void)
 {
 	uint32_t timeout;
 	
-	SPI_SIM_Start();
-	SPI_SIM_SwapByte(W25Q64_READ_STATUS_REGISTER_1);
+	SPI_Start();
+	SPI_SwapByte(W25Q64_READ_STATUS_REGISTER_1);
 	
 	timeout = 0x10000;
-	while ((SPI_SIM_SwapByte(W25Q64_DUMMY_BYTE) & 0x01) == 0x01) {
+	while ((SPI_SwapByte(W25Q64_DUMMY_BYTE) & 0x01) == 0x01) {
 		if (timeout-- == 0)
 			break;
 	}
 	
-	SPI_SIM_Stop();
+	SPI_Stop();
 }
 
 /**
@@ -35,16 +33,16 @@ static void W25Qxx_WaitBusy(void)
  */
 static void W25Qxx_WriteEnable(void)
 {
-	SPI_SIM_Start();
-	SPI_SIM_SwapByte(W25Q64_WRITE_ENABLE);
-	SPI_SIM_Stop();
+	SPI_Start();
+	SPI_SwapByte(W25Q64_WRITE_ENABLE);
+	SPI_Stop();
 	
 	W25Qxx_WaitBusy();
 }
 
 void W25Qxx_Init(void)
 {
-	SPI_SIM_Init();
+	SPIInit();
 }
 
 /**
@@ -53,13 +51,13 @@ void W25Qxx_Init(void)
  */
 void W25Qxx_ReadID(uint8_t *MID, uint16_t *DID)
 {
-	SPI_SIM_Start();
-	SPI_SIM_SwapByte(W25Q64_JEDEC_ID);
-	*MID = SPI_SIM_SwapByte(W25Q64_DUMMY_BYTE);
-	*DID = SPI_SIM_SwapByte(W25Q64_DUMMY_BYTE);
+	SPI_Start();
+	SPI_SwapByte(W25Q64_JEDEC_ID);
+	*MID = SPI_SwapByte(W25Q64_DUMMY_BYTE);
+	*DID = SPI_SwapByte(W25Q64_DUMMY_BYTE);
 	*DID <<= 8;
-	*DID |= SPI_SIM_SwapByte(W25Q64_DUMMY_BYTE);
-	SPI_SIM_Stop();
+	*DID |= SPI_SwapByte(W25Q64_DUMMY_BYTE);
+	SPI_Stop();
 }
 
 /**
@@ -73,18 +71,18 @@ void W25Qxx_PageProgram(uint32_t addr, uint8_t *data, uint16_t len)
 	
 	W25Qxx_WriteEnable();
 
-	SPI_SIM_Start();
+	SPI_Start();
 	
-	SPI_SIM_SwapByte(W25Q64_PAGE_PROGRAM);
-	SPI_SIM_SwapByte(addr >> 16);
-	SPI_SIM_SwapByte(addr >> 8);
-	SPI_SIM_SwapByte(addr);
+	SPI_SwapByte(W25Q64_PAGE_PROGRAM);
+	SPI_SwapByte(addr >> 16);
+	SPI_SwapByte(addr >> 8);
+	SPI_SwapByte(addr);
 	
 	for (i = 0; i < len; i++) {
-		SPI_SIM_SwapByte(data[i]);
+		SPI_SwapByte(data[i]);
 	}
 	
-	SPI_SIM_Stop();
+	SPI_Stop();
 	W25Qxx_WaitBusy();
 }
 
@@ -95,14 +93,14 @@ void W25Qxx_SectorErase(uint32_t addr)
 {
 	W25Qxx_WriteEnable();
 
-	SPI_SIM_Start();
+	SPI_Start();
 	
-	SPI_SIM_SwapByte(W25Q64_SECTOR_ERASE_4KB);
-	SPI_SIM_SwapByte(addr >> 16);
-	SPI_SIM_SwapByte(addr >> 8);
-	SPI_SIM_SwapByte(addr);
+	SPI_SwapByte(W25Q64_SECTOR_ERASE_4KB);
+	SPI_SwapByte(addr >> 16);
+	SPI_SwapByte(addr >> 8);
+	SPI_SwapByte(addr);
 	
-	SPI_SIM_Stop();
+	SPI_Stop();
 	W25Qxx_WaitBusy();
 }
 
@@ -113,24 +111,19 @@ void W25Qxx_ReadData(uint32_t addr, uint8_t *data, uint32_t len)
 {
 	uint32_t i;
 
-	SPI_SIM_Start();
+	SPI_Start();
 	
-	SPI_SIM_SwapByte(W25Q64_READ_DATA);
-	SPI_SIM_SwapByte(addr >> 16);
-	SPI_SIM_SwapByte(addr >> 8);
-	SPI_SIM_SwapByte(addr);
+	SPI_SwapByte(W25Q64_READ_DATA);
+	SPI_SwapByte(addr >> 16);
+	SPI_SwapByte(addr >> 8);
+	SPI_SwapByte(addr);
 	
 	for (i = 0; i < len; i++) {
-		data[i] = SPI_SIM_SwapByte(W25Q64_DUMMY_BYTE);
+		data[i] = SPI_SwapByte(W25Q64_DUMMY_BYTE);
 	}
 	
-	SPI_SIM_Stop();
+	SPI_Stop();
 }
-
-#else		// USE_SPI_SIMULATION
-
-#endif		// USE_SPI_SIMULATION
-
 
 void W25Qxx_Test(void)
 {
