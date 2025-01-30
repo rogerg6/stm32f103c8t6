@@ -1,8 +1,10 @@
 #include "stm32f10x.h"                  // Device header
-#include "rtc.h"
+#include "change_freq.h"
 
 int main(void) 
 {
-	RTC_Test();
+	Change_Main_Freq();
 	return 0;
 }
+
+

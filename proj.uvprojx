@@ -340,7 +340,7 @@
               <MiscControls></MiscControls>
               <Define>USE_STDPERIPH_DRIVER</Define>
               <Undefine></Undefine>
-              <IncludePath>.\start;.\libraries;.\user;.\system;.\bsp;.\user\gpio;.\user\exti;.\user\timer;.\user\adc;.\user\dma;.\user\uart;.\user\i2c;.\user\spi</IncludePath>
+              <IncludePath>.\start;.\libraries;.\user;.\system;.\bsp;.\user\gpio;.\user\exti;.\user\timer;.\user\adc;.\user\dma;.\user\uart;.\user\i2c;.\user\spi;.\user\pwr</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -758,6 +758,16 @@
               <FileName>stm32f10x_it.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\user\stm32f10x_it.h</FilePath>
+            </File>
+            <File>
+              <FileName>change_freq.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\user\pwr\change_freq.c</FilePath>
+            </File>
+            <File>
+              <FileName>change_freq.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\user\pwr\change_freq.h</FilePath>
             </File>
           </Files>
         </Group>
