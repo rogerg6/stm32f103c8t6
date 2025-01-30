@@ -28,5 +28,4 @@
 .\objects\main.o: .\libraries\stm32f10x_usart.h
 .\objects\main.o: .\libraries\stm32f10x_wwdg.h
 .\objects\main.o: .\libraries\misc.h
-.\objects\main.o: .\user\spi\W25Qxx.h
-.\objects\main.o: .\bsp\OLED.h
+.\objects\main.o: .\system\bkp.h

@@ -26,6 +26,7 @@
 ".\objects\stm32f10x_usart.o"
 ".\objects\stm32f10x_wwdg.o"
 ".\objects\delay.o"
+".\objects\bkp.o"
 ".\objects\gpio.o"
 ".\objects\oled.o"
 ".\objects\i2c_sim.o"

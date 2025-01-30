@@ -664,6 +664,16 @@
               <FileType>5</FileType>
               <FilePath>.\system\Delay.h</FilePath>
             </File>
+            <File>
+              <FileName>bkp.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\system\bkp.c</FilePath>
+            </File>
+            <File>
+              <FileName>bkp.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\system\bkp.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

@@ -20,3 +20,4 @@
     - dma mem2mem, mem2periph搬运
     - usart 串口
     - i2c 软件模拟/硬件读取MPU6050 6轴姿态传感器数据
+    - spi 软件模拟/硬件读写W25Q64 Nor Flash
