@@ -190,7 +190,7 @@
             <hadIRAM2>0</hadIRAM2>
             <hadIROM2>0</hadIROM2>
             <StupSel>8</StupSel>
-            <useUlib>0</useUlib>
+            <useUlib>1</useUlib>
             <EndSel>0</EndSel>
             <uLtcg>0</uLtcg>
             <nSecure>0</nSecure>
@@ -674,6 +674,16 @@
               <FileType>5</FileType>
               <FilePath>.\system\bkp.h</FilePath>
             </File>
+            <File>
+              <FileName>rtc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\system\rtc.c</FilePath>
+            </File>
+            <File>
+              <FileName>rtc.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\system\rtc.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -748,11 +758,6 @@
               <FileName>stm32f10x_it.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\user\stm32f10x_it.h</FilePath>
-            </File>
-            <File>
-              <FileName>W25Qxx.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\user\spi\W25Qxx.c</FilePath>
             </File>
           </Files>
         </Group>

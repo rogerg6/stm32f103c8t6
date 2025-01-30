@@ -27,14 +27,14 @@
 ".\objects\stm32f10x_wwdg.o"
 ".\objects\delay.o"
 ".\objects\bkp.o"
+".\objects\rtc.o"
 ".\objects\gpio.o"
 ".\objects\oled.o"
 ".\objects\i2c_sim.o"
 ".\objects\spi.o"
 ".\objects\main.o"
 ".\objects\stm32f10x_it.o"
-".\objects\w25qxx.o"
---strict --scatter ".\Objects\proj.sct"
+--library_type=microlib --strict --scatter ".\Objects\proj.sct"
 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers
 --list ".\Listings\proj.map" -o .\Objects\proj.axf

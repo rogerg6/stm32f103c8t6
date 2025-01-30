@@ -1,8 +1,8 @@
 #include "stm32f10x.h"                  // Device header
-#include "bkp.h"
+#include "rtc.h"
 
 int main(void) 
 {
-	BKP_Test();
+	RTC_Test();
 	return 0;
 }
