@@ -1,19 +1,20 @@
 /**
  * @brief uart1收发数据
  *
- * 硬件连接：usb转ttl模块 vcc和3.3v短接
+ * 硬件连接：usb转ttl模块 
+ *			 vcc和3.3v短接
+ *			 GND接地
  *			 RX,TX 分别接 PA9,PA10
  */
-
-#include "stm32f10x.h"                  // Device header
+#include "usart.h"
 #include "OLED.h"
 #include "Delay.h"
 #include "stdio.h"		// 魔术棒中需要开启use microlib
 
 static uint8_t g_rx_data;
-static uint8_t g_rx_flag;
+uint8_t g_rx_flag;
 
-static void My_UART_Init(void)
+void Serial_Init(void)
 {
 	// 开启时钟
 	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA | RCC_APB2Periph_USART1, ENABLE);
@@ -57,13 +58,13 @@ static void My_UART_Init(void)
 	USART_Cmd(USART1, ENABLE);
 }
 
-static void Serial_SendByte(uint8_t byte)
+void Serial_SendByte(uint8_t byte)
 {
 	USART_SendData(USART1, byte);
 	while (USART_GetFlagStatus(USART1, USART_FLAG_TXE) == RESET);
 }
 
-static uint8_t Serial_RecvByte(void)
+uint8_t Serial_RecvByte(void)
 {
 	/* 轮询接收数据 */
 	//while (USART_GetFlagStatus(USART1, USART_FLAG_RXNE) == RESET);
@@ -115,24 +116,3 @@ int fputc(int ch, FILE *f)
 	return ch;
 }
 
-void UART_Test(void)
-{	
-	OLED_Init();
-	OLED_ShowString(1, 1, "recv: 0x");
-	
-	My_UART_Init();
-	
-	Serial_SendNumber(10086);
-	Serial_SendByte('\n');
-	Serial_SendByte(0x41);
-	Serial_SendByte(0x42);
-	Serial_SendByte(0x43);
-	Serial_SendByte(0x44);
-	Serial_SendString("\nUSaRT test\n");
-	printf("It's stm32f103c8t6 serial demo\n");
-	
-	while (1) {
-		if (g_rx_flag)
-			OLED_ShowHexNum(1, 9, Serial_RecvByte(), 2);	
-	}
-}

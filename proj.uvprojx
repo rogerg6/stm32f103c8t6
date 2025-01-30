@@ -734,6 +734,16 @@
               <FileType>5</FileType>
               <FilePath>.\user\spi\spi.h</FilePath>
             </File>
+            <File>
+              <FileName>usart.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\bsp\usart.c</FilePath>
+            </File>
+            <File>
+              <FileName>usart.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\bsp\usart.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -760,14 +770,14 @@
               <FilePath>.\user\stm32f10x_it.h</FilePath>
             </File>
             <File>
-              <FileName>change_freq.c</FileName>
+              <FileName>usart_test.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\user\pwr\change_freq.c</FilePath>
+              <FilePath>.\user\uart\usart_test.c</FilePath>
             </File>
             <File>
-              <FileName>change_freq.h</FileName>
+              <FileName>usart_test.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\user\pwr\change_freq.h</FilePath>
+              <FilePath>.\user\uart\usart_test.h</FilePath>
             </File>
           </Files>
         </Group>

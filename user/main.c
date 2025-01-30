@@ -1,9 +1,9 @@
 #include "stm32f10x.h"                  // Device header
-#include "change_freq.h"
+#include "usart_test.h"
 
 int main(void) 
 {
-	Change_Main_Freq();
+	Serial_LowPower_Test();
 	return 0;
 }
 
