@@ -3,7 +3,7 @@
 
 
 void Flash_Test(void);
-
+void Flash_ReadSignature(void);
 
 
 

@@ -76,3 +76,19 @@ void Flash_Test(void)
 		OLED_ShowHexNum(3, 4, store_data[4], 2);
 	}
 }
+
+// 读取芯片内部flash容量，芯片ID(芯片签名)
+void Flash_ReadSignature(void)
+{
+	OLED_Init();
+	OLED_ShowString(1, 1, "Flash Size: ");
+	OLED_ShowHexNum(1, 12, *((uint16_t*)0x1FFFF7E0), 4);
+	
+	OLED_ShowString(2, 1, "ID: ");
+	OLED_ShowHexNum(2, 4,  *((uint16_t*)0x1FFFF7E8), 4);
+	OLED_ShowHexNum(2, 9,  *((uint16_t*)(0x1FFFF7E8 + 0x02)), 4);
+	OLED_ShowHexNum(3, 4,  *((uint32_t*)(0x1FFFF7E8 + 0x04)), 8);
+	OLED_ShowHexNum(4, 4,  *((uint32_t*)(0x1FFFF7E8 + 0x08)), 8);
+
+	while (1) {}
+}
