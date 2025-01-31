@@ -340,7 +340,7 @@
               <MiscControls></MiscControls>
               <Define>USE_STDPERIPH_DRIVER</Define>
               <Undefine></Undefine>
-              <IncludePath>.\start;.\libraries;.\user;.\system;.\bsp;.\user\gpio;.\user\exti;.\user\timer;.\user\adc;.\user\dma;.\user\uart;.\user\i2c;.\user\spi;.\user\pwr</IncludePath>
+              <IncludePath>.\start;.\libraries;.\user;.\system;.\hardware;.\user\gpio;.\user\exti;.\user\timer;.\user\adc;.\user\dma;.\user\uart;.\user\i2c;.\user\spi;.\user\pwr;.\unittest</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -684,65 +684,380 @@
               <FileType>5</FileType>
               <FilePath>.\system\rtc.h</FilePath>
             </File>
+            <File>
+              <FileName>flash.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\system\flash.c</FilePath>
+            </File>
+            <File>
+              <FileName>flash.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\system\flash.h</FilePath>
+            </File>
+            <File>
+              <FileName>dma_m2m.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\system\dma_m2m.c</FilePath>
+            </File>
+            <File>
+              <FileName>dma_m2m.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\system\dma_m2m.h</FilePath>
+            </File>
+            <File>
+              <FileName>pwm.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\system\pwm.c</FilePath>
+            </File>
+            <File>
+              <FileName>pwm.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\system\pwm.h</FilePath>
+            </File>
+            <File>
+              <FileName>ic.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\system\ic.c</FilePath>
+            </File>
+            <File>
+              <FileName>ic.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\system\ic.h</FilePath>
+            </File>
+            <File>
+              <FileName>timer.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\system\timer.c</FilePath>
+            </File>
+            <File>
+              <FileName>timer.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\system\timer.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
-          <GroupName>bsp</GroupName>
+          <GroupName>hardware</GroupName>
           <Files>
             <File>
               <FileName>gpio.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\bsp\gpio.c</FilePath>
+              <FilePath>.\hardware\gpio.c</FilePath>
             </File>
             <File>
               <FileName>gpio.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\bsp\gpio.h</FilePath>
+              <FilePath>.\hardware\gpio.h</FilePath>
             </File>
             <File>
               <FileName>OLED.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\bsp\OLED.c</FilePath>
+              <FilePath>.\hardware\OLED.c</FilePath>
             </File>
             <File>
               <FileName>OLED.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\bsp\OLED.h</FilePath>
+              <FilePath>.\hardware\OLED.h</FilePath>
             </File>
             <File>
               <FileName>OLED_Font.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\bsp\OLED_Font.h</FilePath>
+              <FilePath>.\hardware\OLED_Font.h</FilePath>
             </File>
             <File>
-              <FileName>i2c_sim.c</FileName>
+              <FileName>sensorCounter.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\user\i2c\i2c_sim.c</FilePath>
+              <FilePath>.\hardware\sensorCounter.c</FilePath>
             </File>
             <File>
-              <FileName>i2c_sim.h</FileName>
+              <FileName>sensorCounter.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\user\i2c\i2c_sim.h</FilePath>
-            </File>
-            <File>
-              <FileName>spi.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\user\spi\spi.c</FilePath>
-            </File>
-            <File>
-              <FileName>spi.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\user\spi\spi.h</FilePath>
+              <FilePath>.\hardware\sensorCounter.h</FilePath>
             </File>
             <File>
               <FileName>usart.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\bsp\usart.c</FilePath>
+              <FilePath>.\hardware\usart.c</FilePath>
             </File>
             <File>
               <FileName>usart.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\bsp\usart.h</FilePath>
+              <FilePath>.\hardware\usart.h</FilePath>
+            </File>
+            <File>
+              <FileName>i2c_sim.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\hardware\i2c_sim.c</FilePath>
+            </File>
+            <File>
+              <FileName>i2c_sim.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\hardware\i2c_sim.h</FilePath>
+            </File>
+            <File>
+              <FileName>MPU6050.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\hardware\MPU6050.c</FilePath>
+            </File>
+            <File>
+              <FileName>MPU6050.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\hardware\MPU6050.h</FilePath>
+            </File>
+            <File>
+              <FileName>spi.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\hardware\spi.c</FilePath>
+            </File>
+            <File>
+              <FileName>spi.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\hardware\spi.h</FilePath>
+            </File>
+            <File>
+              <FileName>W25Qxx.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\hardware\W25Qxx.c</FilePath>
+            </File>
+            <File>
+              <FileName>W25Qxx.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\hardware\W25Qxx.h</FilePath>
+            </File>
+            <File>
+              <FileName>rotateEncoder.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\hardware\rotateEncoder.c</FilePath>
+            </File>
+            <File>
+              <FileName>rotateEncoder.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\hardware\rotateEncoder.h</FilePath>
+            </File>
+            <File>
+              <FileName>led.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\hardware\led.c</FilePath>
+            </File>
+            <File>
+              <FileName>led.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\hardware\led.h</FilePath>
+            </File>
+            <File>
+              <FileName>key.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\hardware\key.c</FilePath>
+            </File>
+            <File>
+              <FileName>key.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\hardware\key.h</FilePath>
+            </File>
+            <File>
+              <FileName>beeper.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\hardware\beeper.c</FilePath>
+            </File>
+            <File>
+              <FileName>beeper.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\hardware\beeper.h</FilePath>
+            </File>
+            <File>
+              <FileName>photoresister.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\hardware\photoresister.c</FilePath>
+            </File>
+            <File>
+              <FileName>photoresister.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\hardware\photoresister.h</FilePath>
+            </File>
+            <File>
+              <FileName>adc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\hardware\adc.c</FilePath>
+            </File>
+            <File>
+              <FileName>adc.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\hardware\adc.h</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>unittest</GroupName>
+          <Files>
+            <File>
+              <FileName>sensorCounter_test.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\unittest\sensorCounter_test.c</FilePath>
+            </File>
+            <File>
+              <FileName>sensorCounter_test.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\unittest\sensorCounter_test.h</FilePath>
+            </File>
+            <File>
+              <FileName>usart_test.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\unittest\usart_test.c</FilePath>
+            </File>
+            <File>
+              <FileName>usart_test.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\unittest\usart_test.h</FilePath>
+            </File>
+            <File>
+              <FileName>rtc_test.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\unittest\rtc_test.c</FilePath>
+            </File>
+            <File>
+              <FileName>rtc_test.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\unittest\rtc_test.h</FilePath>
+            </File>
+            <File>
+              <FileName>MPU6050_test.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\unittest\MPU6050_test.c</FilePath>
+            </File>
+            <File>
+              <FileName>MPU6050_test.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\unittest\MPU6050_test.h</FilePath>
+            </File>
+            <File>
+              <FileName>W25Qxx_test.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\unittest\W25Qxx_test.c</FilePath>
+            </File>
+            <File>
+              <FileName>W25Qxx_test.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\unittest\W25Qxx_test.h</FilePath>
+            </File>
+            <File>
+              <FileName>rotateEncoder_test.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\unittest\rotateEncoder_test.c</FilePath>
+            </File>
+            <File>
+              <FileName>rotateEncoder_test.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\unittest\rotateEncoder_test.h</FilePath>
+            </File>
+            <File>
+              <FileName>key_test.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\unittest\key_test.c</FilePath>
+            </File>
+            <File>
+              <FileName>key_test.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\unittest\key_test.h</FilePath>
+            </File>
+            <File>
+              <FileName>iwdg_test.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\unittest\iwdg_test.c</FilePath>
+            </File>
+            <File>
+              <FileName>iwdg_test.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\unittest\iwdg_test.h</FilePath>
+            </File>
+            <File>
+              <FileName>wwdg_test.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\unittest\wwdg_test.c</FilePath>
+            </File>
+            <File>
+              <FileName>wwdg_test.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\unittest\wwdg_test.h</FilePath>
+            </File>
+            <File>
+              <FileName>adc_test.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\unittest\adc_test.c</FilePath>
+            </File>
+            <File>
+              <FileName>adc_test.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\unittest\adc_test.h</FilePath>
+            </File>
+            <File>
+              <FileName>flash_test.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\unittest\flash_test.c</FilePath>
+            </File>
+            <File>
+              <FileName>flash_test.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\unittest\flash_test.h</FilePath>
+            </File>
+            <File>
+              <FileName>breath_led_test.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\unittest\breath_led_test.c</FilePath>
+            </File>
+            <File>
+              <FileName>breath_led_test.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\unittest\breath_led_test.h</FilePath>
+            </File>
+            <File>
+              <FileName>motor_test.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\unittest\motor_test.c</FilePath>
+            </File>
+            <File>
+              <FileName>motor_test.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\unittest\motor_test.h</FilePath>
+            </File>
+            <File>
+              <FileName>servo_test.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\unittest\servo_test.c</FilePath>
+            </File>
+            <File>
+              <FileName>servo_test.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\unittest\servo_test.h</FilePath>
+            </File>
+            <File>
+              <FileName>freq_measure_test.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\unittest\freq_measure_test.c</FilePath>
+            </File>
+            <File>
+              <FileName>freq_measure_test.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\unittest\freq_measure_test.h</FilePath>
+            </File>
+            <File>
+              <FileName>external_timer.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\unittest\external_timer.c</FilePath>
+            </File>
+            <File>
+              <FileName>external_timer.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\unittest\external_timer.h</FilePath>
+            </File>
+            <File>
+              <FileName>encoder_speed_measure.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\unittest\encoder_speed_measure.c</FilePath>
+            </File>
+            <File>
+              <FileName>encoder_speed_measure.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\unittest\encoder_speed_measure.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -768,16 +1083,6 @@
               <FileName>stm32f10x_it.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\user\stm32f10x_it.h</FilePath>
-            </File>
-            <File>
-              <FileName>usart_test.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\user\uart\usart_test.c</FilePath>
-            </File>
-            <File>
-              <FileName>usart_test.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\user\uart\usart_test.h</FilePath>
             </File>
           </Files>
         </Group>

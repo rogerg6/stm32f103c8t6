@@ -1,6 +1,9 @@
 #ifndef __RTC_H
 #define __RTC_H
 
+#include "stm32f10x.h"                  // Device header
+
+
 struct RTC_Date {
 	uint16_t year;
 	uint8_t  month;
@@ -10,6 +13,8 @@ struct RTC_Date {
 	uint8_t  sec;
 };
 
-void RTC_Test(void);
+void RTCInit(void);
+void RTC_SetTime(struct RTC_Date *rtc_date);
+void RTC_GetTime(struct RTC_Date *date);
 
 #endif

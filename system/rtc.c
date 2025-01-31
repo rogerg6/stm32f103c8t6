@@ -3,15 +3,10 @@
  *
  * 硬件连接：stlink的3.3v连接VBAT引脚，给备份寄存器单独供电
  */
-
-#include "stm32f10x.h"                  // Device header
 #include <time.h>
-#include "OLED.h"
 #include "rtc.h"
 
-void RTC_SetTime(void);
-
-struct RTC_Date rtc_date = {
+struct RTC_Date default_date = {
 	.year = 2023,
 	.month = 1,
 	.day = 1,
@@ -48,7 +43,7 @@ void RTCInit(void)
 		RTC_WaitForSynchro();
 		RTC_WaitForLastTask();
 	
-		RTC_SetTime();
+		RTC_SetTime(&default_date);
 		BKP_WriteBackupRegister(BKP_DR1, 0x5A5A);
 	} else {
 		RTC_WaitForSynchro();
@@ -57,58 +52,35 @@ void RTCInit(void)
 	
 }
 
-void RTC_SetTime(void)
+void RTC_SetTime(struct RTC_Date *rtc_date)
 {
 	struct tm tmd;
 	time_t ts;
 	
-	tmd.tm_year = rtc_date.year - 1900;
-	tmd.tm_mon  = rtc_date.month - 1;
-	tmd.tm_mday = rtc_date.day;
-	tmd.tm_hour = rtc_date.hour;
-	tmd.tm_min  = rtc_date.min;
-	tmd.tm_sec  = rtc_date.sec;
+	tmd.tm_year = rtc_date->year - 1900;
+	tmd.tm_mon  = rtc_date->month - 1;
+	tmd.tm_mday = rtc_date->day;
+	tmd.tm_hour = rtc_date->hour;
+	tmd.tm_min  = rtc_date->min;
+	tmd.tm_sec  = rtc_date->sec;
 	
 	ts = mktime(&tmd) - 8 * 60 * 60;		// 当前时区是东八区，比GMT时间早了8h
 	RTC_SetCounter(ts);
 	RTC_WaitForLastTask();
 }
 
-void RTC_GetTime(void)
+void RTC_GetTime(struct RTC_Date *date)
 {
 	struct tm tmd;
 	time_t ts;
 
 	ts = RTC_GetCounter() + 8 * 60 *60;
 	tmd = *localtime(&ts);
-	rtc_date.year  = tmd.tm_year + 1900;
-    rtc_date.month = tmd.tm_mon + 1;
-    rtc_date.day   = tmd.tm_mday;
-    rtc_date.hour  = tmd.tm_hour;
-    rtc_date.min   = tmd.tm_min;
-    rtc_date.sec   = tmd.tm_sec;
-}
-
-void RTC_Test(void)
-{
-	OLED_Init();
-	RTCInit();
-	
-	OLED_ShowString(1, 1, "DATE: xxxx-xx-xx");
-	OLED_ShowString(2, 1, "TIME: xx:xx:xx");
-	OLED_ShowString(3, 1, "CNT : ");
-	OLED_ShowString(4, 1, "DIV : ");
-	
-	while (1) {
-		RTC_GetTime();
-		OLED_ShowNum(1, 7, rtc_date.year, 4);
-		OLED_ShowNum(1, 12, rtc_date.month, 2);
-		OLED_ShowNum(1, 15, rtc_date.day, 2);
-		OLED_ShowNum(2, 7, rtc_date.hour, 2);
-		OLED_ShowNum(2, 10, rtc_date.min, 2);
-		OLED_ShowNum(2, 13, rtc_date.sec, 2);
-		OLED_ShowNum(3, 7, RTC_GetCounter(), 10);								// timestamp
-		OLED_ShowNum(4, 7, (32767 - RTC_GetDivider()) * 999 / 32767, 10);		// ms
-	}
+	date->year  = tmd.tm_year + 1900;
+    date->month = tmd.tm_mon + 1;
+    date->day   = tmd.tm_mday;
+    date->hour  = tmd.tm_hour;
+    date->min   = tmd.tm_min;
+    date->sec   = tmd.tm_sec;
 }
 
