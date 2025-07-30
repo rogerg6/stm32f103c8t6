@@ -1,10 +1,10 @@
 
 BUILD_DIR = build
-TARGET = $(BUILD_DIR)/prog.axf
+TARGET = prog
 
 # C sources
 C_SOURCES =  \
-start/core_cm3.c \
+start/core_cm3_gcc.c \
 start/system_stm32f10x.c \
 libraries/misc.c             \
 libraries/stm32f10x_adc.c    \
@@ -77,7 +77,7 @@ user/stm32f10x_it.c              \
 
 # ASM sources
 ASM_SOURCES =  \
-start/startup_stm32f10x_md.s \
+start/gcc_ride7/startup_stm32f10x_md.s \
 
 
 # C includes
@@ -92,54 +92,66 @@ C_INCLUDES = \
 #######################################
 # binaries
 #######################################
-PREFIX = D:/.install/keil5/keil5_MDK/ARM/ARMCC/bin/
-CC = $(PREFIX)armcc
-AS = $(PREFIX)armasm
-LINK = $(PREFIX)armlink
-AR = $(PREFIX)armar
+PREFIX = arm-none-eabi-
+CC = $(PREFIX)gcc
+AS = $(PREFIX)as
+LINK = $(PREFIX)ld
+CP = $(PREFIX)objcopy
+SZ = $(PREFIX)size
+HEX = $(CP) -O ihex
+BIN = $(CP) -O binary -S
  
-# interwork: 允许ARM/Thumb指令混合调用	兼容旧版ARM代码和Thumb高效指令
-# split_sections: 函数级代码分节（每函数独立section）	关键优化：链接器可移除未调用函数，显著减少Flash占用（适合库文件多的项目）
-CFLAGS = --c99 -c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections \
--DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER \
+CPU = -mcpu=cortex-m3
+MCU = $(CPU) -mthumb $(FPU) $(FLOAT-ABI)
 
-# --pd: 汇编预处理定义（等同于C的-D）
-# xref: 生成交叉引用表, 生成符号交叉引用表，用于追踪汇编代码中所有符号，是实现代码可靠性和空间优化的基石工具
-ASFLAGS = --cpu Cortex-M3 -g --apcs=interwork --pd "__MICROLIB SETA 1" \
---pd "STM32F10X_MD SETA 1" --xref  
+CFLAGS = $(MCU) $(C_DEFS) $(C_INCLUDES) $(OPT) -Wall -fdata-sections -ffunction-sections
+CFLAGS += -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER
+ASFLAGS = $(MCU) $(AS_DEFS) $(AS_INCLUDES) $(OPT) -Wall 
+ 
+LDSCRIPT = start/gcc_ride7/stm32f10x_flash_extsram.ld
 
-# strict: 启用严格模式（警告视为错误）
-# scatter: 指定分散加载文件
-LDFLAGS = --cpu Cortex-M3 \
---library_type=microlib --strict --scatter "proj.sct" 
+LIBS = -lc
+LIBDIR = 
+#LDFLAGS = $(MCU) -specs=nano.specs -T$(LDSCRIPT) $(LIBDIR) $(LIBS) -Wl,-Map=$(BUILD_DIR)/$(TARGET).map,--cref -Wl,--gc-sections
+LDFLAGS = $(MCU) -T$(LDSCRIPT) $(LIBDIR) $(LIBS) -Wl,-Map=$(BUILD_DIR)/$(TARGET).map,--cref -Wl,--gc-sections
 
 
 # default action: build all
-all: $(TARGET)
+all: $(BUILD_DIR) $(BUILD_DIR)/$(TARGET).elf $(BUILD_DIR)/$(TARGET).hex $(BUILD_DIR)/$(TARGET).bin
+
 
 #######################################
 # build the application
 #######################################
+# list of objects
 OBJECTS = $(addprefix $(BUILD_DIR)/,$(notdir $(C_SOURCES:.c=.o)))
 vpath %.c $(sort $(dir $(C_SOURCES)))
+# list of ASM program objects
 OBJECTS += $(addprefix $(BUILD_DIR)/,$(notdir $(ASM_SOURCES:.s=.o)))
 vpath %.s $(sort $(dir $(ASM_SOURCES)))
-
-$(BUILD_DIR)/%.o: %.c
-	$(CC) $(CFLAGS) $(C_INCLUDES) $< -o $@
-
-$(BUILD_DIR)/%.o: %.s
-	$(AS) $(ASFLAGS) $< -o $@
-
-$(TARGET): $(BUILD_DIR) $(OBJECTS)
-	$(LINK) $(LDFLAGS) $(OBJECTS) -o $@
-
+ 
+$(BUILD_DIR)/%.o: %.c 
+	$(CC) -c $(CFLAGS) -Wa,-a,-ad,-alms=$(BUILD_DIR)/$(notdir $(<:.c=.lst)) $< -o $@
+$(BUILD_DIR)/%.o: %.s 
+	$(AS) -c $(ASFLAGS) $< -o $@
+ 
+$(BUILD_DIR)/$(TARGET).elf: $(OBJECTS) $(LDSCRIPT)
+	$(CC) $(OBJECTS) $(LDFLAGS) -o $@
+	$(SZ) $@
+ 
+$(BUILD_DIR)/%.hex: $(BUILD_DIR)/%.elf | $(BUILD_DIR)
+	$(HEX) $< $@
+	
+$(BUILD_DIR)/%.bin: $(BUILD_DIR)/%.elf | $(BUILD_DIR)
+	$(BIN) $< $@	
+	
 $(BUILD_DIR):
-	mkdir -p $@		
+	mkdir $@	
 
 download:
-	@openocd.exe -f stlink-dap.cfg -f stm32f1x.cfg -c "program $(TARGET) verify reset exit"
+	@openocd.exe -f stlink-dap.cfg -f stm32f1x.cfg -c "program $(BUILD_DIR)/$(TARGET).hex verify reset exit"
 
 clean:
 	rm -rf $(BUILD_DIR)
   
+-include $(wildcard $(BUILD_DIR)/*.d)

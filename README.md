@@ -11,6 +11,7 @@
 # Build
 - 支持keil构建
 - 支持makefile构建(armcc.mk), 支持openocd下载
+- 支持makefile(gcc.mk), 开源gnu工具链构建
 - 支持clangd解析：compiledb make -f armcc.mk
 
 # Contents
