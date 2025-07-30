@@ -18,7 +18,8 @@
 //#include "motor_test.h"
 //#include "servo_test.h"
 //#include "freq_measure_test.h"
-#include "timer.h"
+//#include "timer.h"
+#include "can_test.h"
 
 int main(void) 
 {
@@ -41,7 +42,8 @@ int main(void)
 	//Motor_Test();
 	//Servo_Test();
 	//PWMMeasure_Test();
-	Timer_Test();
+	//Timer_Test();
+	CAN_Test();
 	
 	return 0;
 }

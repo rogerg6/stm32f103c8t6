@@ -884,6 +884,16 @@
               <FileType>5</FileType>
               <FilePath>.\hardware\adc.h</FilePath>
             </File>
+            <File>
+              <FileName>can.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\hardware\can.c</FilePath>
+            </File>
+            <File>
+              <FileName>can.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\hardware\can.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -1058,6 +1068,16 @@
               <FileName>encoder_speed_measure.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\unittest\encoder_speed_measure.h</FilePath>
+            </File>
+            <File>
+              <FileName>can_test.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\unittest\can_test.c</FilePath>
+            </File>
+            <File>
+              <FileName>can_test.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\unittest\can_test.h</FilePath>
             </File>
           </Files>
         </Group>

@@ -69,7 +69,7 @@ static void Encoder_Init(void)
 	TIM_Cmd(TIM3, ENABLE);
 }
 
-void Timer_Init(void)
+void TimerInit(void)
 {	
 	// 使能系统时钟
 	RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM2, ENABLE);
@@ -113,7 +113,7 @@ void Timer_Init(void)
 
 void Encoder_Speed_Measure(void)
 {
-	Timer_Init();
+	TimerInit();
 	Encoder_Init();
 	OLED_Init();
 	
@@ -129,6 +129,8 @@ void Encoder_Speed_Measure(void)
 	}
 }
 
+#if 0		// redefine
+
 // 利用定时中断来算单位时间的转动次数，即旋转速度
 void TIM2_IRQHandler(void)
 {
@@ -138,5 +140,5 @@ void TIM2_IRQHandler(void)
 		TIM_ClearITPendingBit(TIM2, TIM_IT_Update);
 	}
 }
-
+#endif
 
