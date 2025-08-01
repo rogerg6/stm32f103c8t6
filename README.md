@@ -22,6 +22,7 @@
 - hardware cpu外设功能代码
 - unittest 功能代码的测试代码
 - user 应用代码
+- rtthread-nano rtthread板级支持
 
 ### 根据模块组织
 | 模块    | 内容     |
