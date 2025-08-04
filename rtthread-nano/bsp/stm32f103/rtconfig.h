@@ -34,7 +34,7 @@
 // <h>Debug Configuration
 // <c1>enable kernel debug configuration
 //  <i>Default: enable kernel debug configuration
-//#define RT_DEBUG
+#define RT_DEBUG
 // </c>
 // <o>enable components initialization debug configuration<0-1>
 //  <i>Default: 0
@@ -104,8 +104,9 @@
 // </c>
 // <c1>Dynamic Heap Management(Algorithm: small memory )
 //  <i>Dynamic Heap Management
-// #define RT_USING_HEAP
-// #define RT_USING_SMALL_MEM
+#define RT_USING_HEAP
+#define RT_USING_SMALL_MEM
+#define RT_USING_SMALL_MEM_AS_HEAP
 // </c>
 // <c1>using tiny size of memory
 //  <i>using tiny size of memory
