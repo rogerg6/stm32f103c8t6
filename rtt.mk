@@ -16,7 +16,7 @@ system/Delay.c   \
 hardware/gpio.c                  \
 hardware/led.c                   \
 hardware/usart.c                 \
-user/stm32f10x_it.c              \
+user/stm32f10x_it_rtt.c              \
 rtthread-nano/bsp/stm32f103/main.c                      \
 rtthread-nano/bsp/stm32f103/board.c                      \
 rtthread-nano/src/clock.c     \
