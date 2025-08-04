@@ -365,9 +365,7 @@ rt_err_t rt_thread_startup(rt_thread_t thread)
     thread->number_mask = 1L << thread->number;
     thread->high_mask   = 1L << (thread->current_priority & 0x07);  /* 3bit */
 #else
-    rt_kprintf("==> %s %d\n", __FUNCTION__, __LINE__);
     thread->number_mask = 1L << thread->current_priority;
-    rt_kprintf("==> %s %d\n", __FUNCTION__, __LINE__);
 #endif /* RT_THREAD_PRIORITY_MAX > 32 */
 
     RT_DEBUG_LOG(RT_DEBUG_THREAD, ("startup a thread:%s with priority:%d\n",

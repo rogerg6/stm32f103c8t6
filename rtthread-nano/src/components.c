@@ -211,7 +211,6 @@ void rt_application_init(void)
     tid = rt_thread_create("main", main_thread_entry, RT_NULL,
                            RT_MAIN_THREAD_STACK_SIZE, RT_MAIN_THREAD_PRIORITY, 20);
     RT_ASSERT(tid != RT_NULL);
-    rt_kprintf("==> %s %d\n", __FUNCTION__, __LINE__);
 #else
     rt_err_t result;
 
@@ -223,10 +222,8 @@ void rt_application_init(void)
     /* if not define RT_USING_HEAP, using to eliminate the warning */
     (void)result;
 #endif /* RT_USING_HEAP */
-    rt_kprintf("==> %s %d\n", __FUNCTION__, __LINE__);
 
     rt_thread_startup(tid);
-    rt_kprintf("==> %s %d\n", __FUNCTION__, __LINE__);
 }
 
 /**
@@ -250,31 +247,25 @@ int rtthread_startup(void)
 
     /* scheduler system initialization */
     rt_system_scheduler_init();
-    rt_kprintf("==> %s %d\n", __FUNCTION__, __LINE__);
 
 #ifdef RT_USING_SIGNALS
     /* signal system initialization */
     rt_system_signal_init();
 #endif /* RT_USING_SIGNALS */
-    rt_kprintf("==> %s %d\n", __FUNCTION__, __LINE__);
 
     /* create init_thread */
     rt_application_init();
 
-    rt_kprintf("==> %s %d\n", __FUNCTION__, __LINE__);
     /* timer thread initialization */
     rt_system_timer_thread_init();
-    rt_kprintf("==> %s %d\n", __FUNCTION__, __LINE__);
 
     /* idle thread initialization */
     rt_thread_idle_init();
-    rt_kprintf("==> %s %d\n", __FUNCTION__, __LINE__);
 
 #ifdef RT_USING_SMP
     rt_hw_spin_lock(&_cpus_lock);
 #endif /* RT_USING_SMP */
 
-    rt_kprintf("==> %s %d\n", __FUNCTION__, __LINE__);
     /* start scheduler */
     rt_system_scheduler_start();
 

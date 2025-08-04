@@ -56,12 +56,10 @@ void rt_hw_board_init(void)
     /* Call components board initial (use INIT_BOARD_EXPORT()) */
 #ifdef RT_USING_COMPONENTS_INIT
     rt_components_board_init();
-    rt_kprintf("==> component init\n");
 #endif
 
 #if defined(RT_USING_USER_MAIN) && defined(RT_USING_HEAP)
     rt_system_heap_init(rt_heap_begin_get(), rt_heap_end_get());
-    rt_kprintf("==> heap init\n");
 #endif
 }
 
