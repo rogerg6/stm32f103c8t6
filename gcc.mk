@@ -149,7 +149,7 @@ $(BUILD_DIR):
 	mkdir $@	
 
 download:
-	@openocd.exe -f stlink-dap.cfg -f stm32f1x.cfg -c "program $(BUILD_DIR)/$(TARGET).hex verify reset exit"
+	@openocd.exe -f stlink.cfg -f stm32f1x.cfg -c "program $(BUILD_DIR)/$(TARGET).hex verify reset exit"
 
 clean:
 	rm -rf $(BUILD_DIR)
