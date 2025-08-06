@@ -33,14 +33,15 @@ void MyCAN_Init(void) {
 	CAN_Init(CAN1, &can_cfg);
 	
 	// can filter init
+	// 列表模式，只接受id为0x345遥控帧, 0x234,0x456的数据帧
 	CAN_FilterInitTypeDef can_filter_cfg;
 	can_filter_cfg.CAN_FilterNumber = 0;
-	can_filter_cfg.CAN_FilterIdHigh = 0x0000;
-	can_filter_cfg.CAN_FilterIdLow = 0x0000;
-	can_filter_cfg.CAN_FilterMaskIdHigh = 0x0000;
-	can_filter_cfg.CAN_FilterMaskIdLow = 0x0000;
-	can_filter_cfg.CAN_FilterScale = CAN_FilterScale_32bit;
-	can_filter_cfg.CAN_FilterMode = CAN_FilterMode_IdMask;
+	can_filter_cfg.CAN_FilterIdHigh = 0x234 << 5;
+	can_filter_cfg.CAN_FilterIdLow = 0x345 << 5 | 0x10;
+	can_filter_cfg.CAN_FilterMaskIdHigh = 0x456 << 5;
+	can_filter_cfg.CAN_FilterMaskIdLow = 0x000 << 5;
+	can_filter_cfg.CAN_FilterScale = CAN_FilterScale_16bit;
+	can_filter_cfg.CAN_FilterMode = CAN_FilterMode_IdList;
 	can_filter_cfg.CAN_FilterFIFOAssignment = CAN_Filter_FIFO0;
 	can_filter_cfg.CAN_FilterActivation = ENABLE;
 	CAN_FilterInit(&can_filter_cfg);

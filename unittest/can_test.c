@@ -14,12 +14,14 @@ uint32_t RxID;
 uint8_t RxLength;
 uint8_t RxData[8];
 
-CanTxMsg tx_msgs[4] = {
-	{0x555, 0x00000000, CAN_Id_Standard, CAN_RTR_Data, 4, {0x11, 0x22, 0x33, 0x44}},
-	{0x000, 0x12345678, CAN_Id_Extended, CAN_RTR_Data, 4, {0xAA, 0xBB, 0xCC, 0xDD}},
-	{0x666, 0x00000000, CAN_Id_Standard, CAN_RTR_Remote, 0, {0x00, 0x00, 0x00, 0x00}},
-	{0x000, 0x0789ABCD, CAN_Id_Extended, CAN_RTR_Remote, 0, {0x00, 0x00, 0x00, 0x00}}
+CanTxMsg tx_msgs[] = {
+	{0x123, 0x00000000, CAN_Id_Standard, CAN_RTR_Data, 4, {0x11, 0x22, 0x33, 0x44}},
+	{0x234, 0x00000000, CAN_Id_Standard, CAN_RTR_Data, 4, {0x11, 0x22, 0x33, 0x44}},
+	{0x345, 0x00000000, CAN_Id_Standard, CAN_RTR_Remote, 4, {0x11, 0x22, 0x33, 0x44}},
+	{0x456, 0x00000000, CAN_Id_Standard, CAN_RTR_Data, 4, {0x11, 0x22, 0x33, 0x44}},
+	{0x567, 0x00000000, CAN_Id_Standard, CAN_RTR_Data, 4, {0x11, 0x22, 0x33, 0x44}}
 };
+int tx_msg_len = sizeof(tx_msgs) / sizeof(CanTxMsg);
 
 
 void CAN_Test(void) {
@@ -37,7 +39,7 @@ void CAN_Test(void) {
 
 	while (1) {
 		if (Is_KeyDown(GPIOB, GPIO_Pin_11)) {
-			MyCAN_Transmit(&tx_msgs[i++ % 4]);
+			MyCAN_Transmit(&tx_msgs[i++ % tx_msg_len]);
 		}
 		
 		// check rx data avaiable
@@ -53,7 +55,7 @@ void CAN_Test(void) {
 			}
 
 			if (rx_msg.RTR == CAN_RTR_Data) {
-				OLED_ShowString(1, 10, "Data");
+				OLED_ShowString(1, 10, "Data  ");
 				OLED_ShowHexNum(3, 6, rx_msg.DLC, 1);
 				OLED_ShowHexNum(4, 6, rx_msg.Data[0], 2);
 				OLED_ShowHexNum(4, 9, rx_msg.Data[1], 2);
