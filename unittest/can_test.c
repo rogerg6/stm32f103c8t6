@@ -14,37 +14,60 @@ uint32_t RxID;
 uint8_t RxLength;
 uint8_t RxData[8];
 
+CanTxMsg tx_msgs[4] = {
+	{0x555, 0x00000000, CAN_Id_Standard, CAN_RTR_Data, 4, {0x11, 0x22, 0x33, 0x44}},
+	{0x000, 0x12345678, CAN_Id_Extended, CAN_RTR_Data, 4, {0xAA, 0xBB, 0xCC, 0xDD}},
+	{0x666, 0x00000000, CAN_Id_Standard, CAN_RTR_Remote, 0, {0x00, 0x00, 0x00, 0x00}},
+	{0x000, 0x0789ABCD, CAN_Id_Extended, CAN_RTR_Remote, 0, {0x00, 0x00, 0x00, 0x00}}
+};
+
 
 void CAN_Test(void) {
+	unsigned int i = 0;
+	CanRxMsg rx_msg;
+
 	OLED_Init();
 	KEY_INIT(GPIOB, GPIO_Pin_11);
 	MyCAN_Init();
 	
-	OLED_ShowString(1, 1, "TxID:");
-	OLED_ShowHexNum(1, 6, TxID, 3);
+	OLED_ShowString(1, 1, "Rx:");
 	OLED_ShowString(2, 1, "RxID:");
 	OLED_ShowString(3, 1, "Leng:");
 	OLED_ShowString(4, 1, "Data:");
 
-
 	while (1) {
 		if (Is_KeyDown(GPIOB, GPIO_Pin_11)) {
-			TxData[0] ++;
-			TxData[1] ++;
-			TxData[2] ++;
-			TxData[3] ++;
-			MyCAN_Transmit(TxID, TxLength, TxData);
+			MyCAN_Transmit(&tx_msgs[i++ % 4]);
 		}
 		
 		// check rx data avaiable
 		if (MyCAN_ReceiveFlag()) {
-			MyCAN_Recieve(&RxID, &RxLength, RxData);
-			OLED_ShowHexNum(2, 6, RxID, 3);
-			OLED_ShowHexNum(3, 6, RxLength, 1);
-			OLED_ShowHexNum(4, 6, RxData[0], 2);
-			OLED_ShowHexNum(4, 9, RxData[1], 2);
-			OLED_ShowHexNum(4, 12, RxData[2], 2);
-			OLED_ShowHexNum(4, 15, RxData[3], 2);
+			MyCAN_Recieve(&rx_msg);
+
+			if (rx_msg.IDE == CAN_Id_Standard) {
+				OLED_ShowString(1, 6, "Std");
+				OLED_ShowHexNum(2, 6, rx_msg.StdId, 8);
+			} else if (rx_msg.IDE == CAN_Id_Extended) {
+				OLED_ShowString(1, 6, "Ext");
+				OLED_ShowHexNum(2, 6, rx_msg.ExtId, 8);
+			}
+
+			if (rx_msg.RTR == CAN_RTR_Data) {
+				OLED_ShowString(1, 10, "Data");
+				OLED_ShowHexNum(3, 6, rx_msg.DLC, 1);
+				OLED_ShowHexNum(4, 6, rx_msg.Data[0], 2);
+				OLED_ShowHexNum(4, 9, rx_msg.Data[1], 2);
+				OLED_ShowHexNum(4, 12, rx_msg.Data[2], 2);
+				OLED_ShowHexNum(4, 15, rx_msg.Data[3], 2);
+			} else if (rx_msg.RTR == CAN_RTR_Remote) {
+				OLED_ShowString(1, 10, "Remote");
+				OLED_ShowHexNum(3, 6, rx_msg.DLC, 1);
+				OLED_ShowHexNum(4, 6, 0x00, 2);
+				OLED_ShowHexNum(4, 9, 0x00, 2);
+				OLED_ShowHexNum(4, 12, 0x00, 2);
+				OLED_ShowHexNum(4, 15, 0x00, 2);
+			}
+
 		}
 	}
 }

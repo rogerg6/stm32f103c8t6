@@ -5,9 +5,9 @@
 
 
 void MyCAN_Init(void);
-void MyCAN_Transmit(uint32_t ID, uint8_t data_len, uint8_t *data);
+void MyCAN_Transmit(CanTxMsg *msg);
 int MyCAN_ReceiveFlag(void);
-void MyCAN_Recieve(uint32_t *ID, uint8_t *data_len, uint8_t *data);
+void MyCAN_Recieve(CanRxMsg *msg);
 
 
 
