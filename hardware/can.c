@@ -1,5 +1,8 @@
 #include "can.h"
 
+CanRxMsg rx_msg;
+int rx_flag = 0;
+
 void MyCAN_Init(void) {
 	// gpio init
 	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA, ENABLE);
@@ -31,19 +34,25 @@ void MyCAN_Init(void) {
 	can_cfg.CAN_TTCM = DISABLE;
 	can_cfg.CAN_ABOM = DISABLE;
 	CAN_Init(CAN1, &can_cfg);
+
+	// 中断接收
+	CAN_ITConfig(CAN1, CAN_IT_FMP0, ENABLE);
+
+	NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);
+	NVIC_InitTypeDef nvic_cfg;
+	nvic_cfg.NVIC_IRQChannel = USB_LP_CAN1_RX0_IRQn;
+	nvic_cfg.NVIC_IRQChannelCmd = ENABLE;
+	nvic_cfg.NVIC_IRQChannelPreemptionPriority = 1;
+	nvic_cfg.NVIC_IRQChannelSubPriority = 1;
+	NVIC_Init(&nvic_cfg);
 	
 	// can filter init
-	// 32位屏蔽模式，只接受id为0x12345600 ~ 0x123456ff扩展格式的数据帧
 	CAN_FilterInitTypeDef can_filter_cfg;
 	can_filter_cfg.CAN_FilterNumber = 0;
-
-	uint32_t id1 = (0x12345600 << 3) | 0x4;
-	can_filter_cfg.CAN_FilterIdHigh = id1 >> 16;
-	can_filter_cfg.CAN_FilterIdLow = id1;
-
-	uint32_t mask = (0x1fffff00 << 3) | 0x4;
-	can_filter_cfg.CAN_FilterMaskIdHigh = mask >> 16;
-	can_filter_cfg.CAN_FilterMaskIdLow = mask;
+	can_filter_cfg.CAN_FilterIdHigh = 0x0;
+	can_filter_cfg.CAN_FilterIdLow = 0x0;
+	can_filter_cfg.CAN_FilterMaskIdHigh = 0x0;
+	can_filter_cfg.CAN_FilterMaskIdLow = 0x0;
 	can_filter_cfg.CAN_FilterScale = CAN_FilterScale_32bit;
 	can_filter_cfg.CAN_FilterMode = CAN_FilterMode_IdMask;
 	can_filter_cfg.CAN_FilterFIFOAssignment = CAN_Filter_FIFO0;
@@ -63,11 +72,10 @@ void MyCAN_Transmit(CanTxMsg *msg) {
 	}
 }
 
-int MyCAN_ReceiveFlag(void) {
-	return CAN_MessagePending(CAN1, CAN_FIFO0) > 0;
-}
-
-void MyCAN_Recieve(CanRxMsg *msg) {
-	CAN_Receive(CAN1, CAN_FIFO0, msg);
+void USB_LP_CAN1_RX0_IRQHandler(void) {
+	if (CAN_GetITStatus(CAN1, CAN_IT_FMP0) == SET) {
+		CAN_Receive(CAN1, CAN_FIFO0, &rx_msg);
+		rx_flag = 1;
+	}
 }
 

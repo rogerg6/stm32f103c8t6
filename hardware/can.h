@@ -9,6 +9,9 @@ void MyCAN_Transmit(CanTxMsg *msg);
 int MyCAN_ReceiveFlag(void);
 void MyCAN_Recieve(CanRxMsg *msg);
 
+extern CanRxMsg rx_msg;
+extern int rx_flag;
+
 
 
 #endif

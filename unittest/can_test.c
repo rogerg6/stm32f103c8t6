@@ -15,23 +15,16 @@ uint8_t RxLength;
 uint8_t RxData[8];
 
 CanTxMsg tx_msgs[] = {
-/*   StdId     ExtId         IDE             RTR        DLC         Data[8]          */
-	{0x000, 0x12345600, CAN_Id_Extended, CAN_RTR_Data,   4, {0x11, 0x22, 0x33, 0x44}},
-	{0x000, 0x12345601, CAN_Id_Extended, CAN_RTR_Data,   4, {0x11, 0x22, 0x33, 0x44}},
-	{0x000, 0x123456FE, CAN_Id_Extended, CAN_RTR_Data,   4, {0x11, 0x22, 0x33, 0x44}},
-	{0x000, 0x123456FF, CAN_Id_Extended, CAN_RTR_Data,   4, {0x11, 0x22, 0x33, 0x44}},
-	
-	{0x000, 0x0789AB00, CAN_Id_Extended, CAN_RTR_Data,   4, {0x11, 0x22, 0x33, 0x44}},
-	{0x000, 0x0789AB01, CAN_Id_Extended, CAN_RTR_Data,   4, {0x11, 0x22, 0x33, 0x44}},
-	{0x000, 0x0789ABFE, CAN_Id_Extended, CAN_RTR_Data,   4, {0x11, 0x22, 0x33, 0x44}},
-	{0x000, 0x0789ABFF, CAN_Id_Extended, CAN_RTR_Data,   4, {0x11, 0x22, 0x33, 0x44}},
+	{0x555, 0x00000000, CAN_Id_Standard, CAN_RTR_Data, 4, {0x11, 0x22, 0x33, 0x44}},
+	{0x000, 0x12345678, CAN_Id_Extended, CAN_RTR_Data, 4, {0xAA, 0xBB, 0xCC, 0xDD}},
+	{0x666, 0x00000000, CAN_Id_Standard, CAN_RTR_Remote, 0, {0x00, 0x00, 0x00, 0x00}},
+	{0x000, 0x0789ABCD, CAN_Id_Extended, CAN_RTR_Remote, 0, {0x00, 0x00, 0x00, 0x00}}
 };
 int tx_msg_len = sizeof(tx_msgs) / sizeof(CanTxMsg);
 
 
 void CAN_Test(void) {
 	unsigned int i = 0;
-	CanRxMsg rx_msg;
 
 	OLED_Init();
 	KEY_INIT(GPIOB, GPIO_Pin_11);
@@ -48,9 +41,8 @@ void CAN_Test(void) {
 		}
 		
 		// check rx data avaiable
-		if (MyCAN_ReceiveFlag()) {
-			MyCAN_Recieve(&rx_msg);
-
+		if (rx_flag) {
+			rx_flag = 0;
 			if (rx_msg.IDE == CAN_Id_Standard) {
 				OLED_ShowString(1, 6, "Std");
 				OLED_ShowHexNum(2, 6, rx_msg.StdId, 8);
