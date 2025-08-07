@@ -55,13 +55,13 @@ void Timer_Init(void)
 static __IO uint32_t tim_cnt = 0;
 
 
-void TIM4_IRQHandler(void)
-{
-	if (TIM_GetITStatus(TIM4, TIM_IT_Update) == SET) {
-		tim_cnt++;
-		TIM_ClearITPendingBit(TIM4, TIM_IT_Update);
-	}
-}
+// void TIM4_IRQHandler(void)
+// {
+// 	if (TIM_GetITStatus(TIM4, TIM_IT_Update) == SET) {
+// 		tim_cnt++;
+// 		TIM_ClearITPendingBit(TIM4, TIM_IT_Update);
+// 	}
+// }
 
 
 

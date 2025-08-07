@@ -43,7 +43,12 @@ int main(void)
 	//Servo_Test();
 	//PWMMeasure_Test();
 	//Timer_Test();
-	CAN_Test();
+
+	// A机器发送
+	CAN_Transmit_Test();
+
+	// B机器接收
+	// CAN_Recieve_Test();
 	
 	return 0;
 }

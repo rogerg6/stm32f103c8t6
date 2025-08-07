@@ -6,6 +6,7 @@
 
 
 
+void Timer_Init(void);
 void Timer_Test(void);
 
 

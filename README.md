@@ -38,5 +38,5 @@
 | PWR(电源管理)   |`修改系统主频 unittest/change_freq`、`睡眠模式 unitest/usart_test`、`停机模式 unittest/sensorCounter_test`、`待机模式 unittest/rtc_test`   |
 | WatchDog(看门狗) | `独立看门狗 unittest/iwdg_test`、`窗口看门狗 unittest/wwdg_test` |
 |stm32内部FLASH | `读写内部FLASH system/flash, unittest/flash_test`、`Flash容量，芯片ID unittest/flash_test`|
-|CAN| `can总线hardware/can.c, unittest/can_test.c` |
+|CAN| `can总线hardware/can.c, unittest/can_*_test.c` |
 

@@ -57,7 +57,8 @@ unittest/MPU6050_test.c          \
 unittest/W25Qxx_test.c           \
 unittest/adc_test.c              \
 unittest/breath_led_test.c       \
-unittest/can_test.c              \
+unittest/can_transmit_test.c              \
+unittest/can_recieve_test.c              \
 unittest/change_freq.c           \
 unittest/encoder_speed_measure.c \
 unittest/external_timer.c        \

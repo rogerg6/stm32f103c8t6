@@ -22,7 +22,7 @@ void MyCAN_Init(void) {
 	RCC_APB1PeriphClockCmd(RCC_APB1Periph_CAN1, ENABLE);
 	
 	CAN_InitTypeDef can_cfg;
-	can_cfg.CAN_Mode = CAN_Mode_LoopBack;		// 回环模式
+	can_cfg.CAN_Mode = CAN_Mode_Normal;		    // 正常模式
 	can_cfg.CAN_Prescaler = 48;					//波特率 = 36M / 48 / (1 + 2 + 3) = 125K
 	can_cfg.CAN_BS1 = CAN_BS1_2tq;
 	can_cfg.CAN_BS2 = CAN_BS2_3tq;
